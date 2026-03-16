@@ -30,7 +30,6 @@ import CVIN from '../assets/CV/CV_IN.pdf';
           <i class="fab fa-github"></i>
         </a>
       </div>
-
       <div class="cv-download-group">
         <a :href="CVIN" download class="cv-btn cv-btn-primary">Download CV (English)</a>
         <a :href="CVES" download class="cv-btn cv-btn-secondary">Descargar CV (Español)</a>
@@ -55,6 +54,7 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   color: var(--text-main);
   position: relative;
   z-index: 1;
+  transition: padding .25s;
 }
 
 .card-hover-effect {
@@ -95,6 +95,13 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   }
 }
 
+.about-me-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+}
 .about-me-photo-img {
   width: 300px;
   max-width: 100%;
@@ -102,14 +109,11 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   min-width: 160px;
   border-radius: 1.7rem;
   object-fit: cover;
-  transition: box-shadow 0.18s, transform 0.18s;
+  transition: box-shadow 0.18s, transform 0.18s, width 0.24s, height 0.24s;
   background: #fff;
   cursor: pointer;
-}
-.about-me-photo-img:hover {
-  transform: rotate(-6deg) scale(1.054) translateY(-8px);
-  box-shadow: 0 0 32px 7px var(--card-glow, #6a1b20), 0 4px 22px #0003;
-  z-index: 2;
+  display: block;
+  aspect-ratio: 3/5;
 }
 
 .about-me-info {
@@ -135,7 +139,7 @@ import CVIN from '../assets/CV/CV_IN.pdf';
 }
 .about-me-info p {
   color: var(--content-color);
-  line-height: 1.2;
+  line-height: 1.25;
   font-size: 1.08rem;
 }
 .about-me-info strong {
@@ -196,32 +200,81 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   box-shadow: var(--cv-btn-shadow-hover);
   transform: translateY(-4px) scale(1.05);
 }
-
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .about-me-card {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 1.7rem 1rem;
+    align-items: center;
+    padding: 2.3rem 0.7rem 1.7rem 0.7rem;
+    max-width: 99vw;
+    gap: 1.3rem;
   }
   .about-me-info {
     padding: 0;
+    width: 100%;
+    text-align: left;
+  }
+  .about-me-photo {
+    width: 100%;
+    margin-top: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .about-me-photo-img {
-    width: 70vw;
+    width: 78vw;
+    max-width: 420px;
     height: auto;
-    margin-top: 1.2rem;
+    min-width: 120px;
+    display: block;
+    aspect-ratio: 3/4;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .about-me-card {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem 1rem;
+    align-items: center;
+    padding: 1.1rem 0.1rem 1.1rem 0.1rem;
+    gap: 1.15rem;
+    max-width: 100vw;
+    margin: 0.8rem auto 0 auto;
+  }
+  .about-me-info {
+    width: 100%;
+    padding: 0;
+    text-align: left;
+  }
+  .about-me-photo {
+    width: 100vw;
+    margin-top: 0;
+    margin-bottom: 0.7em;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .about-me-photo-img {
-    width: 180px;
-    height: 210px;
-    margin-top: 1rem;
+    width: 96vw !important;
+    max-width: 96vw !important;
+    min-width: 0;
+    height: auto !important;
+    margin: 0 auto;
+    border-radius: 1.5rem;
+    display: block;
+    aspect-ratio: 1/1.13;
+  }
+  .cv-btn {
+    min-width: unset;
+    width: 97vw;
+    max-width: 98vw;
+    font-size: 1.04rem;
+    padding: 0.8em 0.3em;
+    margin-bottom: 0.6em;
+  }
+  .cv-download-group {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    align-items: stretch;
   }
 }
 </style>

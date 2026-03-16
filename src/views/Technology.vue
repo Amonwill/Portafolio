@@ -108,7 +108,6 @@ const services = [
       </div>
     </div>
 
-
     <div class="technologies-card card-hover-effect always-glow">
       <div class="tech-sections">
         <div 
@@ -249,48 +248,62 @@ const services = [
   padding: 2.7rem 2.2rem 1.7rem 2.2rem;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
+  overflow-x: clip;
 }
-
+@media (max-width: 1000px) {
+  .technologies-card {
+    min-width: 92vw;
+    max-width: 97vw;
+    padding: 1.5rem 1rem 1.2rem 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .technologies-card {
+    min-width: 98vw;
+    max-width: 99vw;
+    padding: 1.2rem 0.3rem 1.1rem 0.3rem;
+  }
+}
 .card-hover-effect {
-  box-shadow: 
-      0 0 8px 1.5px var(--glow-a, #ffd70022), 
-      0 2px 10px #0002;
+  box-shadow: 0 0 4px 0.5px var(--glow-a, #ffd70018), 0 2px 10px #0002;
   transition: box-shadow 0.45s cubic-bezier(.28,.84,.42,1), transform .16s;
 }
 .card-hover-effect.always-glow {
-  animation: boxGlowTechnologies 4.2s linear infinite;
+  animation: boxGlowTechnologiesSutil 4.2s linear infinite;
 }
 
-@keyframes boxGlowTechnologies {
+@keyframes boxGlowTechnologiesSutil {
   0% {
     box-shadow:
-      0 0 11px 2.5px var(--glow-a, #1ed76077),
-      0 0 18px 5px var(--glow-b, #40008044),
-      0 0 23px 6.5px var(--glow-c, #ffd70033),
+      0 0 7px 1.5px var(--glow-a, #1ed76033),
+      0 0 14px 3.7px var(--glow-b, #40008022),
+      0 0 16px 4.5px var(--glow-c, #ffd70012),
       0 2px 10px #0002;
   }
   33% {
     box-shadow:
-      0 0 17px 5px var(--glow-b, #40008044),
-      0 0 26px 7px var(--glow-c, #ffd70033),
-      0 0 10px 2px var(--glow-a, #1ed76077),
+      0 0 10px 2.5px var(--glow-b, #40008022),
+      0 0 15px 4.2px var(--glow-c, #ffd70013),
+      0 0 5px 1.2px var(--glow-a, #1ed76022),
       0 2px 10px #0002;
   }
   66% {
     box-shadow:
-      0 0 21px 6px var(--glow-c, #ffd70033),
-      0 0 8px 2.5px var(--glow-a, #1ed76077),
-      0 0 16px 4px var(--glow-b, #40008044),
+      0 0 14px 3px var(--glow-c, #ffd70013),
+      0 0 7px 2px var(--glow-a, #1ed76033),
+      0 0 11px 2.5px var(--glow-b, #40008022),
       0 2px 10px #0002;
   }
   100% {
     box-shadow:
-      0 0 11px 2.5px var(--glow-a, #1ed76077),
-      0 0 18px 5px var(--glow-b, #40008044),
-      0 0 23px 6.5px var(--glow-c, #ffd70033),
+      0 0 7px 1.5px var(--glow-a, #1ed76033),
+      0 0 14px 3.7px var(--glow-b, #40008022),
+      0 0 16px 4.5px var(--glow-c, #ffd70012),
       0 2px 10px #0002;
   }
 }
+
 .tech-sections {
   margin-top: 1rem;
 }
@@ -328,6 +341,7 @@ const services = [
   transform: scale(1.085);
   background: #fff5;
 }
+
 @media (max-width: 950px) {
   .services-row {
     flex-direction: column;
