@@ -1,9 +1,10 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const isDark = ref(false)
+const menuOpen = ref(false)
 
-
+// Tema oscuro/claro:
 function applyTheme(dark) {
   if (dark) {
     document.documentElement.classList.add('dark')
@@ -17,7 +18,6 @@ function applyTheme(dark) {
 function toggleTheme() {
   applyTheme(!isDark.value)
 }
-
 onMounted(() => {
   const saved = localStorage.getItem('theme')
   if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -25,12 +25,31 @@ onMounted(() => {
   } else {
     applyTheme(false)
   }
+
+  // Cierra el menú cuando se agranda la pantalla
+  window.addEventListener('resize', handleResize)
 })
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
+function toggleMenu() {
+  menuOpen.value = !menuOpen.value
+}
+function handleResize() {
+  if (window.innerWidth > 900) {
+    menuOpen.value = false;
+  }
+}
 </script>
 
 <template>
   <nav class="navbar">
-    <div class="nav-links">
+    <button class="burger" @click="toggleMenu" aria-label="Open Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links" :class="{ open: menuOpen }">
       <router-link to="/home" exact-active-class="active-link">Home</router-link>
       <router-link to="/aboutme" exact-active-class="active-link">About Me</router-link>
       <router-link to="/projects" exact-active-class="active-link">Projects</router-link>
@@ -38,9 +57,7 @@ onMounted(() => {
       <router-link to="/certificates" exact-active-class="active-link">Certificates</router-link>
     </div>
     <div class="navbar-right">
-
       <a href="https://github.com/Amonwill" target="_blank" class="github-btn">GitHub</a>
-
       <div class="dark-toggle">
         <label class="switch" :title="isDark ? 'Modo claro' : 'Modo oscuro'">
           <input
@@ -59,7 +76,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
 .navbar {
   position: sticky;
   top: 0;
@@ -74,7 +90,7 @@ onMounted(() => {
   gap: 1rem;
   padding: 0 2.5rem 0 1.5rem;
   box-sizing: border-box;
-  font-family: 'Fira Mono', 'Courier New', monospace;
+  font-family: 'Montserrat', 'Fira Mono', 'Courier New', monospace;
   border-bottom: 1.5px solid #222;
 }
 
@@ -83,6 +99,7 @@ onMounted(() => {
   gap: 2rem;
   flex: 1;
   justify-content: flex-start;
+  transition: all .25s;
 }
 .nav-links a {
   color: var(--Navbar-text, #000);
@@ -169,6 +186,61 @@ input:checked + .slider:before {
   z-index: 2;
   font-size: 1.05rem;
   margin-left: 4px;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 111;
+}
+.burger span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  background: var(--Navbar-text, #fff);
+  margin: 3px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+@media (max-width: 900px) {
+  .burger {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    left: 0; top: 55px;
+    width: 100vw;
+    background: var(--Navbar-bg, #161616);
+    flex-direction: column;
+    gap: 1.4rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.4rem 2rem 2rem 2rem;
+    border-bottom: 2px solid #222;
+    z-index: 102;
+    box-shadow: 0 6px 24px #0007;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0 0.4rem;
+  }
+  .navbar-right {
+    position: relative;
+    z-index: 105;
+  }
 }
 
 @media (max-width: 800px) {

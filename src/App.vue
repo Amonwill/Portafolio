@@ -8,17 +8,20 @@ import Navbar from './components/Navbar.vue'
 </template>
 
 <style>
+/* FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 
+/* PALETA DE COLORES Y VARIABLES CSS */
 :root {
-  --bg-main: #f0e4e4;
-  --text-main: #111;
-  --card-bg: rgb(240, 228, 228);
+  --bg-main: #f7ecec;       /* Fondo principal claro */
+  --text-main: #181818;     /* Texto principal oscuro */
+  --card-bg: #f0e4e4;       /* Card clara */
   --card-glow: #1ed760;
   --h1-color: #1ed760;
   --h2-color: #400080;
   --link-color: #400080;
   --link-color-hover: #1ed760;
-  --content-color: #000000;
+  --content-color: #181818;
   --Navbar-bg: #fff;
   --Navbar-text: #000;
   --Navbar-hover: #1ed760;
@@ -51,23 +54,52 @@ import Navbar from './components/Navbar.vue'
   --cv-btn-text-hover: #ffd700;
 }
 
+/* FONDO GLOBAL */
 body {
   background: var(--bg-main);
   color: var(--text-main);
-  transition: background 0.3s, color 0.3s;
-  font-family: 'Fira Mono', 'Courier New', monospace;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
   min-height: 100vh;
   margin: 0;
+  line-height: 1.5;
+  transition: background 0.3s, color 0.3s;
 }
 
+/* TIPOGRAFÍA Y JERARQUÍA TEXTUAL */
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: .01em;
+  margin-bottom: 0.6em;
+}
 
-.card-hover-effect {
-  transition: transform .16s, box-shadow .16s;
-  box-shadow: 0 2px 18px #0002;
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
 }
-.card-hover-effect:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 0 32px 7px var(--card-glow, #6a1b20), 0 4px 22px #0002;
-  z-index: 2;
+
+h1 {
+  font-size: 2.7rem;
+  font-weight: 800;
 }
+
+.about-me-info p, .about-me-info strong {
+  font-size: 1.15rem;
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+}
+
+.about-me-info h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 1.3em;
+}
+
+.cv-btn {
+  font-family: 'Montserrat', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
 </style>

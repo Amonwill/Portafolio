@@ -45,39 +45,48 @@ import CVIN from '../assets/CV/CV_IN.pdf';
 <style scoped>
 .about-me-card {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   background: var(--card-bg);
-  border-radius: 2rem;
-  padding: 2.5rem 2rem;
+  border-radius: 2.1rem;
+  padding: 3rem 2rem;
   margin: 2rem auto;
-  max-width: 1000px;
+  max-width: 980px;
   align-items: center;
   color: var(--text-main);
-  box-shadow: 0 2px 18px #0002;
+  box-shadow: 0 2px 18px #0002, 0 0 32px 7px var(--card-glow, #6a1b20); 
 }
-
-
 .about-me-photo-img {
-  width: 260px;
-  height: 320px;
-  border-radius: 2rem;
+  width: 300px;
+  max-width: 100%;
+  height: 500px;
+  min-width: 160px;
+  border-radius: 1.7rem;
   object-fit: cover;
-  box-shadow: 0 1.5px 12px #0004;
-  transform: rotate(-6deg);
-  transition: 
-    box-shadow 0.18s, 
-    transform 0.18s;
-  background: #fff;
-  cursor: pointer;
+}
+  @media (max-width: 800px) {
+  .about-me-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.7rem 1rem;
+  }
+  .about-me-info {
+    padding: 0;
+  }
+  .about-me-photo-img {
+    width: 70vw;
+    height: auto;
+    margin-top: 1.2rem;
+  }
 }
 .about-me-photo-img:hover {
   transform: rotate(-6deg) scale(1.054) translateY(-8px);
   box-shadow: 0 0 32px 7px var(--card-glow, #6a1b20), 0 4px 22px #0003;
   z-index: 2;
 }
-
 .about-me-info {
   flex: 2;
+  text-align: left;
+  padding-left: 0.6rem;
 }
 .about-me-info h1 {
   color: var(--h1-color);
@@ -94,7 +103,7 @@ import CVIN from '../assets/CV/CV_IN.pdf';
 }
 .about-me-info p {
   color: var(--content-color);
-  line-height: 1.8;
+  line-height: 1.1;
   font-size: 1.08rem;
 }
 .about-me-info strong {
@@ -125,8 +134,6 @@ import CVIN from '../assets/CV/CV_IN.pdf';
     margin-top: 1rem;
   }
 }
-
-
 .card-hover-effect {
   transition: transform .16s, box-shadow .16s;
 }
