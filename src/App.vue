@@ -22,7 +22,7 @@ import Navbar from './components/Navbar.vue'
   --h2-color: #0f6fa5;
 
   /* === NAVBAR === */
-  --Navbar-bg: #fafcff;
+  --Navbar-bg: rgba(250,252,255,0.58);
   --Navbar-text: #222b2f;
   --Navbar-border: #e0e8ed;
   --Navbar-hover: #45a2ff;
@@ -44,7 +44,7 @@ import Navbar from './components/Navbar.vue'
   --glow-c: #fc5c7d;
 
   /* === CV === */
-  --cv-btn-bg: #f8fdff;
+  --cv-btn-bg: rgba(24,24,24,0.72);
   --cv-btn-bg-main: linear-gradient(90deg, #5bd6b9 0%, #48c6ef 100%);
   --cv-btn-text-main: #fff;
   --cv-btn-bg-alt: #eaf6ff;
@@ -70,7 +70,7 @@ import Navbar from './components/Navbar.vue'
   --h2-color: #ffd700;
 
   /* Navbar  */
-  --Navbar-bg: #181818;
+  --Navbar-bg: rgba(24,24,24,0.48);
   --Navbar-text: #fff;
   --Navbar-border: #333;
   --Navbar-hover: #ffd700;
