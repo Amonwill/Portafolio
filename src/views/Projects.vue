@@ -5,6 +5,7 @@ import Porta from '../assets/Portafolio/Portafolio.png';
 import Arduino_IDE from '../assets/iconos/Arduino_IDE.png';
 import Kotlin_Icon from '../assets/iconos/Kotlin_Icon.png';
 import tensorflow_lite from '../assets/iconos/tensorflow-lite.webp';
+import SectionNameCard from '../components/SectionNameCard.vue';
 
 const projects = [
   {
@@ -45,9 +46,17 @@ const projects = [
 
 <template>
   <section class="projects-section">
-    <h2>Projects</h2>
+    <SectionNameCard
+      title="Projects"
+      subtitle="Personal & Team Software Projects"
+      class="section-glow-card"
+    />
     <div class="projects-grid">
-      <div class="project-card" v-for="(proj, idx) in projects" :key="idx">
+      <div
+        class="project-card"
+        v-for="(proj, idx) in projects"
+        :key="idx"
+      >
         <div class="project-img-banner">
           <img :src="proj.image" :alt="proj.title" />
         </div>
@@ -62,20 +71,17 @@ const projects = [
               :title="tech.name"
               class="tech-icon"
             >
-              
               <img
                 v-if="tech.image"
                 :src="tech.image"
                 :alt="tech.name"
                 class="tech-img-icon"
               />
-              
               <i
                 v-else-if="tech.icon"
                 :class="tech.icon"
                 :style="tech.style || ''"
               ></i>
-              
               <span
                 v-else-if="tech.emoji"
                 :style="tech.style || ''"
@@ -95,58 +101,119 @@ const projects = [
 </template>
 
 <style scoped>
+.section-glow-card {
+  margin-bottom: 2.8rem;
+  position: relative;
+  z-index: 2;
+  box-shadow: none;
+  animation: boxGlowProjectHeader 4s linear infinite;
+}
+
+@keyframes boxGlowProjectHeader {
+  0% {
+    box-shadow:
+      0 0 11px 2px var(--glow-a, #1ed76099),
+      0 0 22px 6px var(--glow-b, #40008033),
+      0 0 33px 8px var(--glow-c, #ffd70033);
+  }
+  33% {
+    box-shadow:
+      0 0 16px 5px var(--glow-b, #40008033),
+      0 0 24px 8px var(--glow-c, #ffd70033),
+      0 0 8px 2px var(--glow-a, #1ed76099);
+  }
+  66% {
+    box-shadow:
+      0 0 19px 6px var(--glow-c, #ffd70033),
+      0 0 10px 3px var(--glow-a, #1ed76099),
+      0 0 16px 4px var(--glow-b, #40008033);
+  }
+  100% {
+    box-shadow:
+      0 0 11px 2px var(--glow-a, #1ed76099),
+      0 0 22px 6px var(--glow-b, #40008033),
+      0 0 33px 8px var(--glow-c, #ffd70033);
+  }
+}
+
 .projects-section {
   max-width: 1200px;
   margin: 2.5rem auto;
-  padding: 2rem;
+  padding: 2rem 1rem;
 }
-.projects-section h2 {
-  text-align: center;
-  color: var(--h1-color);
-  font-size: 2.1rem;
-  margin-bottom: 2rem;
-  font-weight: 700;
-}
-
 .projects-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  /* Espaciado entre tarjetas: 3.6rem vertical, 4.6rem horizontal */
+  gap: 3.6rem 4.6rem; 
   justify-content: center;
+  align-items: stretch;
 }
 
 .project-card {
   background: var(--card-bg);
   border-radius: 1.2rem;
   overflow: hidden;
-  min-width: 310px;
+  min-width: 320px;
   max-width: 355px;
-  box-shadow: 0 2px 18px #0002;
   display: flex;
   flex-direction: column;
-  transition: transform .16s, box-shadow .16s;
   position: relative;
-  height: 510px;
+  
+  box-shadow:
+    0 0 18px 1px var(--glow-a, #ffd70033),
+    0 2px 10px #0002;
+  transition:
+    box-shadow 0.45s cubic-bezier(.28,.84,.42,1),
+    transform .18s;
+  z-index: 1;
+  margin-bottom: 0.7em;
 }
 .project-card:hover {
-  transform: translateY(-8px) scale(1.022);
-  box-shadow: 0 0 32px 6px var(--card-glow, #6a1b20), 0 4px 22px #0002;
+  animation: boxGlowProject 3.1s linear infinite;
   z-index: 2;
+  transform: translateY(-8px) scale(1.022);
+}
+@keyframes boxGlowProject {
+  0% {
+    box-shadow:
+      0 0 21px 2px var(--glow-a, #ffd700aa),
+      0 0 34px 9px var(--glow-b, #1ed760aa),
+      0 0 74px 19px var(--glow-c, #400080aa),
+      0 2px 10px #0002;
+  }
+  33% {
+    box-shadow:
+      0 0 28px 8px var(--glow-b, #1ed760aa),
+      0 0 38px 13px var(--glow-c, #400080aa),
+      0 0 18px 7px var(--glow-a, #ffd700aa),
+      0 2px 10px #0002;
+  }
+  66% {
+    box-shadow:
+      0 0 44px 12px var(--glow-c, #400080aa),
+      0 0 14px 4px var(--glow-a, #ffd700aa),
+      0 0 33px 11px var(--glow-b, #1ed760aa),
+      0 2px 10px #0002;
+  }
+  100% {
+    box-shadow:
+      0 0 21px 2px var(--glow-a, #ffd700aa),
+      0 0 34px 9px var(--glow-b, #1ed760aa),
+      0 0 74px 19px var(--glow-c, #400080aa),
+      0 2px 10px #0002;
+  }
 }
 
 .project-img-banner {
   width: 100%;
-  height: 58%;
-  min-height: 230px;
-  max-height: 320px;
+  height: 220px;
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 0;
 }
-
 .project-img-banner img {
   width: 100%;
   height: 100%;
@@ -156,29 +223,30 @@ const projects = [
 
 .project-info {
   flex: 1 1 auto;
-  padding: 1.1rem 1.2rem 0.5rem 1.2rem;
+  padding: 1.1rem 1.1rem 0.7rem 1.1rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
 .project-title {
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: var(--h2-color);
+  font-size: 1.23rem;
+  font-weight: 800;
+  color: #ffd700;
   margin-top: 0;
   margin-bottom: 0.45rem;
-  letter-spacing: .02em;
+  letter-spacing: .01em;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
 }
-
 .project-desc {
-  font-size: 1rem;
-  color: var(--content-color);
-  margin-bottom: .8rem;
+  font-size: 1.01rem;
+  color: var(--content-color, #fff);
+  margin-bottom: .7rem;
   font-family: 'Fira Mono', 'Courier New', monospace;
   letter-spacing: .03em;
   text-align: left;
 }
+
 .project-techs {
   display: flex;
   align-items: center;
@@ -187,9 +255,9 @@ const projects = [
   margin-top: 0.5em;
 }
 .project-techs > span:first-child {
-  color: var(--h2-color);
+  color: #ffd700;
   font-weight: bold;
-  font-size: .98rem;
+  font-size: .95rem;
   margin-right: .5em;
   letter-spacing: .03em;
   font-family: 'Fira Mono', 'Courier New', monospace;
@@ -216,18 +284,23 @@ const projects = [
   margin-top: auto;
 }
 .project-gh a {
-  color: var(--h2-color, #fff);
-  font-size: 2.1rem;
-  opacity: .87;
-  transition: opacity .15s, color .15s;
+  color: #ffd700;
+  font-size: 2rem;
+  opacity: .82;
+  transition: opacity .15s, color .13s;
 }
 .project-gh a:hover {
   opacity: 1;
   color: var(--link-color-hover, #7ecdff);
 }
+@media (max-width: 1200px) {
+  .projects-grid {
+    gap: 2.2rem 2.8rem;
+  }
+}
 @media (max-width: 1000px) {
   .projects-grid {
-    gap: 1.1rem;
+    gap: 1.3rem 2rem;
   }
   .project-card {
     min-width: 92vw;
@@ -235,24 +308,23 @@ const projects = [
     height: auto;
   }
   .project-img-banner {
-    min-height: 160px;
-    height: 42vw;
-    max-height: 240px;
+    height: 175px;
   }
 }
 @media (max-width: 600px) {
   .projects-section {
     padding: .5rem;
   }
+  .projects-grid {
+    gap: 1.3rem 0.5rem;
+  }
   .project-card {
-    min-width: 99vw;
+    min-width: 98vw;
     max-width: 99vw;
     height: auto;
   }
   .project-img-banner {
-    min-height: 90px;
-    height: 34vw;
-    max-height: 160px;
+    height: 110px;
   }
 }
 </style>

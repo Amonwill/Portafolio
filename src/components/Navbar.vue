@@ -4,7 +4,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const isDark = ref(false)
 const menuOpen = ref(false)
 
-// Tema oscuro/claro:
+
 function applyTheme(dark) {
   if (dark) {
     document.documentElement.classList.add('dark')
@@ -26,7 +26,6 @@ onMounted(() => {
     applyTheme(false)
   }
 
-  // Cierra el menú cuando se agranda la pantalla
   window.addEventListener('resize', handleResize)
 })
 onUnmounted(() => {

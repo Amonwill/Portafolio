@@ -5,7 +5,7 @@ import CVIN from '../assets/CV/CV_IN.pdf';
 </script>
 
 <template>
-  <section class="about-me-card card-hover-effect">
+  <section class="about-me-card card-hover-effect always-glow">
     <div class="about-me-info">
       <h1>William Cruz Hernandez</h1>
       <h2>Student at IPN ESIME CULHUACAN</h2>
@@ -53,8 +53,50 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   max-width: 980px;
   align-items: center;
   color: var(--text-main);
-  box-shadow: 0 2px 18px #0002, 0 0 32px 7px var(--card-glow, #6a1b20); 
+  position: relative;
+  z-index: 1;
 }
+
+.card-hover-effect {
+  position: relative;
+  transition: box-shadow 0.45s cubic-bezier(.28,.84,.42,1), transform .16s;
+  box-shadow:
+    0 0 18px 2px var(--glow-a, #1ed760),
+    0 0 36px 6px var(--glow-b, #400080),
+    0 0 74px 14px var(--glow-c, #ffd700);
+}
+
+.card-hover-effect.always-glow {
+  animation: boxGlowAnimate 3.2s linear infinite;
+}
+
+@keyframes boxGlowAnimate {
+  0% {
+    box-shadow:
+      0 0 16px 2px var(--glow-a, #1ed760),
+      0 0 44px 13px var(--glow-b, #400080),
+      0 0 88px 24px var(--glow-c, #ffd700);
+  }
+  33% {
+    box-shadow:
+      0 0 28px 5px var(--glow-b, #400080),
+      0 0 60px 19px var(--glow-c, #ffd700),
+      0 0 18px 7px var(--glow-a, #1ed760);
+  }
+  66% {
+    box-shadow:
+      0 0 52px 13px var(--glow-c, #ffd700),
+      0 0 24px 4px var(--glow-a, #1ed760),
+      0 0 43px 12px var(--glow-b, #400080);
+  }
+  100% {
+    box-shadow:
+      0 0 16px 2px var(--glow-a, #1ed760),
+      0 0 44px 13px var(--glow-b, #400080),
+      0 0 88px 24px var(--glow-c, #ffd700);
+  }
+}
+
 .about-me-photo-img {
   width: 300px;
   max-width: 100%;
@@ -62,21 +104,9 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   min-width: 160px;
   border-radius: 1.7rem;
   object-fit: cover;
-}
-  @media (max-width: 800px) {
-  .about-me-card {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.7rem 1rem;
-  }
-  .about-me-info {
-    padding: 0;
-  }
-  .about-me-photo-img {
-    width: 70vw;
-    height: auto;
-    margin-top: 1.2rem;
-  }
+  transition: box-shadow 0.18s, transform 0.18s;
+  background: #fff;
+  cursor: pointer;
 }
 .about-me-photo-img:hover {
   transform: rotate(-6deg) scale(1.054) translateY(-8px);
@@ -89,10 +119,13 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   padding-left: 0.6rem;
 }
 .about-me-info h1 {
-  color: var(--h1-color);
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 0.2rem;
+  background: var(--title-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; 
 }
 .about-me-info h2 {
   font-family: 'Fira Mono', 'Courier New', monospace;
@@ -121,27 +154,6 @@ import CVIN from '../assets/CV/CV_IN.pdf';
 .about-me-links a:hover {
   color: var(--link-color-hover);
 }
-
-@media (max-width: 700px) {
-  .about-me-card {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem 1rem;
-  }
-  .about-me-photo-img {
-    width: 180px;
-    height: 210px;
-    margin-top: 1rem;
-  }
-}
-.card-hover-effect {
-  transition: transform .16s, box-shadow .16s;
-}
-.card-hover-effect:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 0 32px 7px var(--card-glow, #6a1b20), 0 4px 22px #0002;
-  z-index: 2;
-}
 .cv-download-group {
   margin-top: 1rem;
   display: flex;
@@ -161,7 +173,6 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   outline: none;
   margin-top: 0;
   letter-spacing: 0.04em;
-
   box-shadow: var(--cv-btn-shadow);
   transition: 
     background 0.18s, 
@@ -174,5 +185,33 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   color: var(--cv-btn-text-hover);
   transform: translateY(-3px) scale(1.04);
   box-shadow: var(--cv-btn-shadow-hover);
+}
+
+@media (max-width: 800px) {
+  .about-me-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.7rem 1rem;
+  }
+  .about-me-info {
+    padding: 0;
+  }
+  .about-me-photo-img {
+    width: 70vw;
+    height: auto;
+    margin-top: 1.2rem;
+  }
+}
+@media (max-width: 700px) {
+  .about-me-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 1rem;
+  }
+  .about-me-photo-img {
+    width: 180px;
+    height: 210px;
+    margin-top: 1rem;
+  }
 }
 </style>

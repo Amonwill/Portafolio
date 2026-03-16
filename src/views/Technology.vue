@@ -1,4 +1,6 @@
 <script setup>
+import SectionNameCard from '../components/SectionNameCard.vue';
+
 const techSections = [
   {
     title: "Languages",
@@ -61,27 +63,66 @@ const techSections = [
     ],
   }
 ];
+
+const services = [
+  {
+    title: "Web Development",
+    description: "Building responsive and dynamic websites with HTML, CSS, JavaScript, and frameworks such as Vue and .NET Core.",
+  },
+  {
+    title: "Desktop Applications",
+    description: "C#, Python (PyQt) y más, para apps de escritorio multiplataforma y robustas.",
+  },
+  {
+    title: "Android Development",
+    description: `Kotlin, Compose and Flutter to create modern, performant and user-friendly Android apps.`,
+  },
+];
 </script>
 
 <template>
-  <section class="technologies-card card-hover-effect">
-    <h2>Technologies &amp; Tools</h2>
-    <div class="tech-sections">
-      <div 
-        v-for="(section, idx) in techSections"
-        :key="section.title"
-        class="tech-section"
-      >
-        <h3>{{ section.title }}</h3>
-        <div class="icons-list">
-          <img 
-            v-for="icon in section.icons"
-            :key="icon.name"
-            :src="icon.src"
-            :alt="icon.name"
-            :title="icon.name"
-            class="tech-icon"
-          />
+  <section class="technologies-section">
+    <SectionNameCard
+      class="section-glow-card"
+      title="Services & Technologies"
+      subtitle="Stack, frameworks, databases & tools"
+    />
+
+    <div class="services-row">
+      <div class="service-card" v-for="(srv,idx) in services" :key="idx">
+        <h3 class="service-title">{{ srv.title }}</h3>
+        <p 
+          v-if="!srv.description.includes('<ul')" 
+          class="service-desc" 
+          v-html="srv.description"
+        ></p>
+        <div 
+          v-else 
+          class="service-desc" 
+          v-html="srv.description"
+        ></div>
+      </div>
+    </div>
+
+
+    <div class="technologies-card card-hover-effect always-glow">
+      <div class="tech-sections">
+        <div 
+          v-for="(section, idx) in techSections"
+          :key="section.title"
+          class="tech-section"
+        >
+          <h3>{{ section.title }}</h3>
+          <div class="icons-list">
+            <img 
+              v-for="icon in section.icons"
+              :key="icon.name"
+              :src="icon.src"
+              :alt="icon.name"
+              :title="icon.name"
+              class="tech-icon"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -89,27 +130,165 @@ const techSections = [
 </template>
 
 <style scoped>
+.technologies-section {
+  max-width: 1000px;
+  margin: 2.5rem auto;
+  padding: 2rem 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-glow-card {
+  margin-bottom: 2.8rem;
+  position: relative;
+  z-index: 2;
+  box-shadow: none;
+  animation: boxGlowSection 4s linear infinite;
+}
+@keyframes boxGlowSection {
+  0% {
+    box-shadow:
+      0 0 10px 1.5px var(--glow-a, #1ed76099),
+      0 0 22px 5.5px var(--glow-b, #40008066),
+      0 0 36px 8.5px var(--glow-c, #ffd70044);
+  }
+  33% {
+    box-shadow:
+      0 0 18px 4px var(--glow-b, #40008077),
+      0 0 30px 7px var(--glow-c, #ffd70033),
+      0 0 10px 3px var(--glow-a, #1ed76099);
+  }
+  66% {
+    box-shadow:
+      0 0 25px 6px var(--glow-c, #ffd70033),
+      0 0 12px 3px var(--glow-a, #1ed76099),
+      0 0 22px 5px var(--glow-b, #40008066);
+  }
+  100% {
+    box-shadow:
+      0 0 10px 1.5px var(--glow-a, #1ed76099),
+      0 0 22px 5.5px var(--glow-b, #40008066),
+      0 0 36px 8.5px var(--glow-c, #ffd70044);
+  }
+}
+
+.services-row {
+  display: flex;
+  gap: 2.2rem;
+  justify-content: center;
+  align-items: stretch;
+  margin-bottom: 2.7rem;
+  flex-wrap: wrap;
+}
+.service-card {
+  background: var(--card-bg, #181818);
+  border-radius: 1.2rem;
+  box-shadow: 0 0 8px 1.5px var(--glow-a, #ffd70022), 0 2px 8px #0002;
+  min-width: 240px;
+  max-width: 332px;
+  padding: 2.1em 1.38em 1.38em 1.38em;
+  text-align: center;
+  transition: 
+    box-shadow 0.4s cubic-bezier(.29,.73,.44,1),
+    transform 0.18s cubic-bezier(.45,.2,.34,1);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1em;
+}
+.service-card:hover {
+  transform: translateY(-7px) scale(1.033);
+  box-shadow:
+    0 0 15px 3px var(--glow-a, #1ed76055),
+    0 0 25px 8px var(--glow-b, #40008033),
+    0 0 19px 6px var(--glow-c, #ffd70022),
+    0 2px 14px #0002;
+  z-index: 2;
+}
+
+.service-title {
+  font-size: 1.19rem;
+  font-weight: 800;
+  margin-bottom: .65em;
+  background: var(--title-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.service-desc {
+  color: var(--content-color);
+  opacity: .93;
+  font-size: 1.07rem;
+  font-family: inherit;
+  line-height: 1.37;
+  margin: 0 auto;
+  max-width: 25em;
+  word-break: break-word;
+  text-align: center;
+}
+.service-desc ul {
+  margin: .4em 0 0 1em; padding: 0;
+  text-align: left;
+}
+.service-desc li {
+  margin: .18em 0;
+  font-size: 1.05em;
+}
+
 .technologies-card {
   background: var(--card-bg);
   color: var(--content-color);
   border-radius: 1.5rem;
-  box-shadow: 0 2px 18px #0002;
   max-width: 880px;
-  margin: 2.5rem auto;
+  width: 100%;
+  margin: 0 auto;
   padding: 2.7rem 2.2rem 1.7rem 2.2rem;
-  transition: transform .16s, box-shadow .16s;
+  position: relative;
+  z-index: 1;
 }
-.technologies-card:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 0 32px 7px var(--card-glow, #6a1b20), 0 4px 22px #0002;
-  z-index: 2;
+
+.card-hover-effect {
+  box-shadow: 
+      0 0 8px 1.5px var(--glow-a, #ffd70022), 
+      0 2px 10px #0002;
+  transition: box-shadow 0.45s cubic-bezier(.28,.84,.42,1), transform .16s;
 }
-.technologies-card h2 {
-  text-align: center;
-  color: var(--h1-color);
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-  font-weight: bold;
+.card-hover-effect.always-glow {
+  animation: boxGlowTechnologies 4.2s linear infinite;
+}
+
+@keyframes boxGlowTechnologies {
+  0% {
+    box-shadow:
+      0 0 11px 2.5px var(--glow-a, #1ed76077),
+      0 0 18px 5px var(--glow-b, #40008044),
+      0 0 23px 6.5px var(--glow-c, #ffd70033),
+      0 2px 10px #0002;
+  }
+  33% {
+    box-shadow:
+      0 0 17px 5px var(--glow-b, #40008044),
+      0 0 26px 7px var(--glow-c, #ffd70033),
+      0 0 10px 2px var(--glow-a, #1ed76077),
+      0 2px 10px #0002;
+  }
+  66% {
+    box-shadow:
+      0 0 21px 6px var(--glow-c, #ffd70033),
+      0 0 8px 2.5px var(--glow-a, #1ed76077),
+      0 0 16px 4px var(--glow-b, #40008044),
+      0 2px 10px #0002;
+  }
+  100% {
+    box-shadow:
+      0 0 11px 2.5px var(--glow-a, #1ed76077),
+      0 0 18px 5px var(--glow-b, #40008044),
+      0 0 23px 6.5px var(--glow-c, #ffd70033),
+      0 2px 10px #0002;
+  }
+}
+.tech-sections {
+  margin-top: 1rem;
 }
 .tech-section {
   margin-bottom: 1.7rem;
@@ -122,10 +301,9 @@ const techSections = [
   letter-spacing: .01em;
   font-weight: 600;
 }
-
 .icons-list {
   display: flex;
-  gap: 1.3rem;
+  gap: 1.4rem 1.2rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -139,12 +317,19 @@ const techSections = [
   padding: .3rem;
   object-fit: contain;
   box-shadow: 0 1.5px 5px #3333;
-  transition: box-shadow .18s, transform .17s;
+  transition: box-shadow .18s, transform .17s, background .18s;
 }
 .tech-icon:hover {
   box-shadow: 0 0 12px 3px var(--card-glow), 0 2px 10px #1114;
   transform: scale(1.085);
   background: #fff5;
+}
+@media (max-width: 950px) {
+  .services-row {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+  }
 }
 @media (max-width: 600px) {
   .technologies-card {
@@ -154,6 +339,11 @@ const techSections = [
     width: 38px;
     height: 38px;
     padding: .15rem;
+  }
+  .service-card {
+    min-width: 96vw;
+    max-width: 99vw;
+    padding: 1.2em .8em;
   }
 }
 </style>

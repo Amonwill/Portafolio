@@ -8,14 +8,12 @@ import Navbar from './components/Navbar.vue'
 </template>
 
 <style>
-/* FUENTES */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 
-/* PALETA DE COLORES Y VARIABLES CSS */
 :root {
-  --bg-main: #f7ecec;       /* Fondo principal claro */
-  --text-main: #181818;     /* Texto principal oscuro */
-  --card-bg: #f0e4e4;       /* Card clara */
+  --bg-main: #f7ecec;
+  --text-main: #181818;
+  --card-bg: #f0e4e4;
   --card-glow: #1ed760;
   --h1-color: #1ed760;
   --h2-color: #400080;
@@ -31,6 +29,10 @@ import Navbar from './components/Navbar.vue'
   --cv-btn-bg-hover: transparent; 
   --cv-btn-text: #222;
   --cv-btn-text-hover: #1ed760;
+  --glow-a: #a932ee;
+  --glow-b: #580ba5;
+  --glow-c: #400080;
+  --title-gradient: linear-gradient(90deg, #97e891, #bfe5ff 60%, #f3b4e3 90%);
 } 
 
 .dark {
@@ -52,9 +54,47 @@ import Navbar from './components/Navbar.vue'
   --cv-btn-bg-hover: transparent;
   --cv-btn-text: #fff7de;
   --cv-btn-text-hover: #ffd700;
+  --glow-a: #ffd700;
+  --glow-b: #ea0000;
+  --glow-c: #6a1b20;
+  --title-gradient: linear-gradient(90deg, #ffd700, #ff7c51 60%, #7ee1ff 90%);
 }
 
-/* FONDO GLOBAL */
+.card-hover-effect {
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+.card-hover-effect::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -18px; left: -18px; right: -18px; bottom: -18px;
+  border-radius: inherit;
+  background: conic-gradient(
+    var(--glow-1),
+    var(--glow-2),
+    var(--glow-3),
+    var(--glow-1)
+  );
+  filter: blur(18px) brightness(0.95) saturate(1.03);
+  opacity: 0.65;
+  animation: glow-rotate 6s linear infinite;
+  transition: opacity 0.22s, filter 0.23s;
+  pointer-events: none;
+}
+
+.card-hover-effect:hover::before {
+  opacity: 1;
+  filter: blur(27px) brightness(1.09) saturate(1.15);
+}
+
+@keyframes glow-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(359deg); }
+}
+
 body {
   background: var(--bg-main);
   color: var(--text-main);
@@ -65,7 +105,6 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* TIPOGRAFÍA Y JERARQUÍA TEXTUAL */
 h1, h2, h3, h4 {
   font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
   font-weight: 800;
@@ -101,5 +140,4 @@ h1 {
   font-weight: 600;
   letter-spacing: 0.05em;
 }
-
 </style>
