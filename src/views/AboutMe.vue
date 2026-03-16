@@ -32,8 +32,8 @@ import CVIN from '../assets/CV/CV_IN.pdf';
       </div>
 
       <div class="cv-download-group">
-        <a :href="CVIN" download class="cv-btn">Download CV (English)</a>
-        <a :href="CVES" download class="cv-btn">Descargar CV (Español)</a>
+        <a :href="CVIN" download class="cv-btn cv-btn-primary">Download CV (English)</a>
+        <a :href="CVES" download class="cv-btn cv-btn-secondary">Descargar CV (Español)</a>
       </div>
     </div>
     <div class="about-me-photo">
@@ -65,11 +65,9 @@ import CVIN from '../assets/CV/CV_IN.pdf';
     0 0 36px 6px var(--glow-b, #400080),
     0 0 74px 14px var(--glow-c, #ffd700);
 }
-
 .card-hover-effect.always-glow {
   animation: boxGlowAnimate 3.2s linear infinite;
 }
-
 @keyframes boxGlowAnimate {
   0% {
     box-shadow:
@@ -113,6 +111,7 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   box-shadow: 0 0 32px 7px var(--card-glow, #6a1b20), 0 4px 22px #0003;
   z-index: 2;
 }
+
 .about-me-info {
   flex: 2;
   text-align: left;
@@ -125,7 +124,7 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   background: var(--title-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text; 
+  background-clip: text;
 }
 .about-me-info h2 {
   font-family: 'Fira Mono', 'Courier New', monospace;
@@ -136,7 +135,7 @@ import CVIN from '../assets/CV/CV_IN.pdf';
 }
 .about-me-info p {
   color: var(--content-color);
-  line-height: 1.1;
+  line-height: 1.2;
   font-size: 1.08rem;
 }
 .about-me-info strong {
@@ -155,36 +154,47 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   color: var(--link-color-hover);
 }
 .cv-download-group {
-  margin-top: 1rem;
+  margin-top: 1.3rem;
   display: flex;
-  gap: 1rem;
+  gap: 1.15rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
+
 .cv-btn {
   display: inline-block;
+  min-width: 260px;
   background: var(--cv-btn-bg);
   color: var(--cv-btn-text);
-  padding: 0.8em 1.7em;
-  border-radius: 8px;
-  font-family: 'Fira Mono', monospace;
+  padding: 1.1em 2.2em;
+  border-radius: 12px;
+  font-family: var(--cv-btn-font, 'Fira Mono', monospace);
   text-decoration: none;
-  font-size: 1.08rem;
+  font-size: 1.09rem;
   font-weight: 700;
   border: none;
   outline: none;
   margin-top: 0;
   letter-spacing: 0.04em;
   box-shadow: var(--cv-btn-shadow);
-  transition: 
-    background 0.18s, 
-    color 0.17s, 
-    transform 0.14s, 
-    box-shadow 0.18s;
+  transition: background 0.19s, color 0.17s, box-shadow 0.22s, transform 0.13s;
+  cursor: pointer;
+}
+.cv-btn-primary {
+  background: var(--cv-btn-bg-main, #1a1a1a);
+  color: var(--cv-btn-text-main, #1ed760);
+  box-shadow: 0 8px 24px #1ed76035, 0 1.5px 9px #ffd70022;
+}
+.cv-btn-secondary {
+  background: var(--cv-btn-bg-alt, #232323);
+  color: var(--cv-btn-text-alt, #7ee1ff);
+  box-shadow: 0 3px 12px #7ee1ff19;
 }
 .cv-btn:hover, .cv-btn:focus {
   background: var(--cv-btn-bg-hover);
   color: var(--cv-btn-text-hover);
-  transform: translateY(-3px) scale(1.04);
   box-shadow: var(--cv-btn-shadow-hover);
+  transform: translateY(-4px) scale(1.05);
 }
 
 @media (max-width: 800px) {

@@ -4,7 +4,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const isDark = ref(false)
 const menuOpen = ref(false)
 
-
 function applyTheme(dark) {
   if (dark) {
     document.documentElement.classList.add('dark')
@@ -25,7 +24,6 @@ onMounted(() => {
   } else {
     applyTheme(false)
   }
-
   window.addEventListener('resize', handleResize)
 })
 onUnmounted(() => {
@@ -58,7 +56,7 @@ function handleResize() {
     <div class="navbar-right">
       <a href="https://github.com/Amonwill" target="_blank" class="github-btn">GitHub</a>
       <div class="dark-toggle">
-        <label class="switch" :title="isDark ? 'Modo claro' : 'Modo oscuro'">
+        <label class="switch" :title="isDark ? 'Light mode' : 'Dark mode'">
           <input
             type="checkbox"
             :checked="isDark"
@@ -81,8 +79,8 @@ function handleResize() {
   z-index: 100;
   width: 100%;
   min-height: 56px;
-  background: var(--Navbar-bg, #fff);
-  color: var(--Navbar-text, #000);
+  background: var(--Navbar-bg, #fafcff);
+  color: var(--Navbar-text, #222b2f);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -90,7 +88,9 @@ function handleResize() {
   padding: 0 2.5rem 0 1.5rem;
   box-sizing: border-box;
   font-family: 'Montserrat', 'Fira Mono', 'Courier New', monospace;
-  border-bottom: 1.5px solid #222;
+  border-bottom: 1.5px solid var(--Navbar-border, #e0e8ed);
+  box-shadow: 0 2px 14px #5bd6b910;
+  backdrop-filter: blur(9px);
 }
 
 .nav-links {
@@ -101,16 +101,20 @@ function handleResize() {
   transition: all .25s;
 }
 .nav-links a {
-  color: var(--Navbar-text, #000);
-  font-weight: normal;
+  color: var(--Navbar-text, #222b2f);
+  font-weight: 600;
   text-decoration: none;
-  font-size: 1.08rem;
-  transition: color 0.2s;
+  font-size: 1.09rem;
+  transition: color 0.2s, background 0.18s, border-radius 0.16s;
   letter-spacing: 0.5px;
+  padding: 0.3em 0.7em;
+  border-radius: 7px;
 }
 .nav-links .active-link,
 .nav-links a:hover {
-  color: var(--Navbar-hover, #1ed760);
+  color: var(--Navbar-hover, #45a2ff);
+  background: var(--Navbar-hover-bg, #eaf6fa);
+  box-shadow: 0 4px 14px #48c6ef25;
 }
 
 .navbar-right {
@@ -118,17 +122,36 @@ function handleResize() {
   align-items: center;
   gap: 1.1rem;
 }
+
 .github-btn {
-  background: #181818;
-  border-radius: 6px;
-  color: #fff;
-  padding: 6px 18px;
+  background: var(--github-btn-bg, linear-gradient(90deg, #45a2ffcc 10%, #5bd6b9cc 95%));
+  color: var(--github-btn-text, #fff);
+  border-radius: 8px;
+  padding: 6px 20px 7px 20px;
   text-decoration: none;
-  font-weight: bold;
-  transition: background 0.2s;
+  font-weight: 700;
+  font-size: 1.09rem;
+  letter-spacing: .025em;
+  transition: background 0.22s, color 0.22s;
+  border: none;
+  box-shadow: 0 2px 14px #bfe5ff22;
+  margin-right: 6px;
 }
 .github-btn:hover {
-  background: #24292e;
+  background: var(--github-btn-hover-bg, linear-gradient(100deg,#48c6ef 20%, #7ee1ff 100%));
+  color: var(--github-btn-hover-text, #232323);
+  box-shadow: 0 5px 22px #5bd6b944;
+}
+
+.dark .github-btn {
+  background: var(--github-btn-bg, linear-gradient(92deg, #1ed760 0, #ffd700 100%));
+  color: var(--github-btn-text, #161616);
+  box-shadow: 0 2px 12px #ffd70011;
+}
+.dark .github-btn:hover {
+  background: var(--github-btn-hover-bg, linear-gradient(110deg, #ffd700 25%, #fc5c7d 100%));
+  color: #181818;
+  box-shadow: 0 8px 32px #ffd70033;
 }
 
 .dark-toggle {
@@ -155,7 +178,7 @@ function handleResize() {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #222;
+  background-color: var(--nav-toggle-bg, #222);
   border-radius: 34px;
   transition: 0.3s;
   display: flex;
@@ -172,19 +195,22 @@ function handleResize() {
   background-color: #fff;
   border-radius: 50%;
   transition: 0.3s;
+  box-shadow: 0 2px 8px #48c6ef33;
 }
 input:checked + .slider {
-  background-color: #ea0000;
+  background-color: var(--nav-toggle-bg-dark, #ffb400);
 }
 input:checked + .slider:before {
   transform: translateX(20px);
-  background: #fff;
+  background: #222;
 }
 .mode-icon {
   position: relative;
   z-index: 2;
   font-size: 1.05rem;
   margin-left: 4px;
+  color: var(--Navbar-hover, #45a2ff);
+  pointer-events: none;
 }
 
 .burger {
@@ -204,7 +230,7 @@ input:checked + .slider:before {
   display: block;
   width: 28px;
   height: 4px;
-  background: var(--Navbar-text, #fff);
+  background: var(--Navbar-text, #222b2f);
   margin: 3px 0;
   border-radius: 2px;
   transition: 0.3s;
@@ -219,15 +245,15 @@ input:checked + .slider:before {
     position: absolute;
     left: 0; top: 55px;
     width: 100vw;
-    background: var(--Navbar-bg, #161616);
+    background: var(--Navbar-bg, #fafcff);
     flex-direction: column;
     gap: 1.4rem;
     align-items: flex-start;
     justify-content: flex-start;
     padding: 1.4rem 2rem 2rem 2rem;
-    border-bottom: 2px solid #222;
+    border-bottom: 2px solid var(--Navbar-border, #e0e8ed);
     z-index: 102;
-    box-shadow: 0 6px 24px #0007;
+    box-shadow: 0 6px 24px #48c6ef22;
   }
   .nav-links.open {
     display: flex;

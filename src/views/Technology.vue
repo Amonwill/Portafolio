@@ -66,6 +66,10 @@ const techSections = [
 
 const services = [
   {
+    title: "Data Analysis & Machine Learning",
+    description: `Power BI, Python and TensorFlow to analyze data, create predictive models and derive insights for informed decision-making.`,
+  },
+  {
     title: "Web Development",
     description: "Building responsive and dynamic websites with HTML, CSS, JavaScript, and frameworks such as Vue and .NET Core.",
   },
