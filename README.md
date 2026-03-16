@@ -109,7 +109,9 @@ Puedes desplegar tu build en cualquier servicio que soporte frontends estáticos
 ---
 
 ## 📷 **Capturas**
-*(Agrega aquí imágenes de tu portafolio si lo deseas)*
+<img width="1131" height="904" alt="image" src="https://github.com/user-attachments/assets/4bf853f8-65a2-4be8-97f6-f9f42120880e" />
+<img width="1088" height="844" alt="image" src="https://github.com/user-attachments/assets/2289927a-b6ac-4673-8642-d36544b3c1ef" />
+
 
 ---
 
