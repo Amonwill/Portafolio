@@ -32,6 +32,9 @@ onUnmounted(() => {
 function toggleMenu() {
   menuOpen.value = !menuOpen.value
 }
+function closeMenu() {
+  menuOpen.value = false
+}
 function handleResize() {
   if (window.innerWidth > 900) {
     menuOpen.value = false;
@@ -47,11 +50,11 @@ function handleResize() {
       <span></span>
     </button>
     <div class="nav-links" :class="{ open: menuOpen }">
-      <router-link to="/home" exact-active-class="active-link">Home</router-link>
-      <router-link to="/aboutme" exact-active-class="active-link">About Me</router-link>
-      <router-link to="/projects" exact-active-class="active-link">Projects</router-link>
-      <router-link to="/technology" exact-active-class="active-link">Technologies</router-link>
-      <router-link to="/certificates" exact-active-class="active-link">Certificates</router-link>
+      <router-link to="/home" exact-active-class="active-link" @click="closeMenu">Home</router-link>
+      <router-link to="/aboutme" exact-active-class="active-link" @click="closeMenu">About Me</router-link>
+      <router-link to="/projects" exact-active-class="active-link" @click="closeMenu">Projects</router-link>
+      <router-link to="/technology" exact-active-class="active-link" @click="closeMenu">Technologies</router-link>
+      <router-link to="/certificates" exact-active-class="active-link" @click="closeMenu">Certificates</router-link>
     </div>
     <div class="navbar-right">
       <a href="https://github.com/Amonwill" target="_blank" class="github-btn">GitHub</a>
@@ -79,7 +82,7 @@ function handleResize() {
   z-index: 100;
   width: 100%;
   min-height: 56px;
-  background: var(--Navbar-bg, #fafcff);
+  background: var(--Navbar-bg, rgba(250,252,255,0.58)); /* más transparente */
   color: var(--Navbar-text, #222b2f);
   display: flex;
   align-items: center;
@@ -91,6 +94,10 @@ function handleResize() {
   border-bottom: 1.5px solid var(--Navbar-border, #e0e8ed);
   box-shadow: 0 2px 14px #5bd6b910;
   backdrop-filter: blur(9px);
+}
+
+.dark .navbar {
+  background: var(--Navbar-bg, rgba(24,24,24,0.48));
 }
 
 .nav-links {
@@ -245,7 +252,7 @@ input:checked + .slider:before {
     position: absolute;
     left: 0; top: 55px;
     width: 100vw;
-    background: var(--Navbar-bg, #fafcff);
+    background: var(--Navbar-bg, rgba(250,252,255,0.58));
     flex-direction: column;
     gap: 1.4rem;
     align-items: flex-start;
