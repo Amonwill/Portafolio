@@ -109,11 +109,40 @@ import CVIN from '../assets/CV/CV_IN.pdf';
   min-width: 160px;
   border-radius: 1.7rem;
   object-fit: cover;
-  transition: box-shadow 0.18s, transform 0.18s, width 0.24s, height 0.24s;
   background: #fff;
   cursor: pointer;
   display: block;
-  aspect-ratio: 3/5;
+  transition: box-shadow 0.3s, transform 0.18s;
+}
+.about-me-photo-img:hover {
+  box-shadow:
+    0 0 0 4px var(--card-bg, #fff), 
+    0 0 18px 3px var(--card-glow-a, #1ed760aa),
+    0 0 42px 7px var(--card-glow-b, #40008077),
+    0 0 60px 13px var(--card-glow-c, #ffd70055);
+  transform: rotate(-5deg) scale(1.045) translateY(-7px);
+  z-index: 2;
+}
+@media (max-width: 900px) {
+  .about-me-photo-img {
+    width: 78vw;
+    height: auto;
+    max-width: 420px;
+    min-width: 120px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+@media (max-width: 600px) {
+  .about-me-photo-img {
+    width: 96vw !important;
+    max-width: 96vw !important;
+    min-width: 0;
+    height: auto !important;
+    margin: 0 auto;
+    border-radius: 1.5rem;
+    display: block;
+  }
 }
 
 .about-me-info {
