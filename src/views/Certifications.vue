@@ -1,6 +1,38 @@
 <script setup>
 import Reque from '../assets/Certifications/Requisitos.jpg'
+/* == Desarrollo web == */
+import Vue from '../assets/Certifications/vuejs.jpg'
+import PHP from '../assets/Certifications/PHP.jpg'
+
+/* == C# == */
+import CsharpBasico from '../assets/Certifications/csharp-basico.jpg'
+import BackendC from '../assets/Certifications/BackendCsharp.jpg'
+import CAvanzado from '../assets/Certifications/CSharpAvanzado.jpg'
+
+/* == Base de datos == */
+import PostgreSQL from '../assets/Certifications/PostgreSQL.jpg'
 const certifications = [
+  {
+    title: "Curso de C#",
+    category: "SOFTWARE DEVELOPMENT",
+    year: "2025",
+    description: "Certification in the basics to intermediate level of C# programming language.",
+    image: CsharpBasico,
+  },
+    {
+    title: "Curso de C# .NET Avanzado",
+    category: "SOFTWARE DEVELOPMENT",
+    year: "2025",
+    description: "Certification in advanced topics of C# programming language.",
+    image: CAvanzado,
+  },
+  {
+    title: "Aprende programacion backend en C# .NET",
+    category: "SOFTWARE DEVELOPMENT",
+    year: "2025",
+    description: "Certification in backend development with C# programming language.",
+    image: BackendC,
+  },
   {
     title: "Recoleccion y analisis de requerimientos de software",
     category: "SOFTWARE DEVELOPMENT",
@@ -8,6 +40,28 @@ const certifications = [
     description: "Certification in requirements gathering and analysis for software development projects.",
     image: Reque,
   },
+  {
+    title: "Vue.js: de cero a experto",
+    category: "FRONTEND DEVELOPMENT",
+    year: "2026",
+    description: "Certification in the fundamentals of Vue.js framework.",
+    image: Vue,
+  },
+  {
+    title: "Modern PHP: the complete guide - from Beginner to Advanced",
+    category: "BACKEND DEVELOPMENT",
+    year: "2026",
+    description: "Certification in the fundamentals of PHP programming language.",
+    image: PHP,
+  },
+  {
+    title: "PostgreSQL: De cero a avanzado (pgAdmin4 y shell)",
+    category: "DATABASES",
+    year: "2026",
+    description: "Certification in the fundamentals of PostgreSQL database management system.",
+    image: PostgreSQL,
+  },
+
 ]
 </script>
 

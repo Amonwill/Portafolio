@@ -82,7 +82,7 @@ function handleResize() {
   z-index: 100;
   width: 100%;
   min-height: 56px;
-  background: var(--Navbar-bg, rgba(250,252,255,0.58)); /* más transparente */
+  background: var(--Navbar-bg, rgba(250,252,255,0.58)); 
   color: var(--Navbar-text, #222b2f);
   display: flex;
   align-items: center;
