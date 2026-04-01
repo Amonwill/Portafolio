@@ -1,4 +1,5 @@
 <script setup>
+import GIT from '../assets/Certifications/GIT.jpg'
 import Reque from '../assets/Certifications/Requisitos.jpg'
 /* == Desarrollo web == */
 import Vue from '../assets/Certifications/vuejs.jpg'
@@ -60,6 +61,13 @@ const certifications = [
     year: "2026",
     description: "Certification in the fundamentals of PostgreSQL database management system.",
     image: PostgreSQL,
+  },
+  {
+    title: "Aprende Git, GitHub y GitHub Actions",
+    category: "VERSION CONTROL",
+    year: "2026",
+    description: "Certification in the fundamentals of Git version control system.",
+    image: GIT,
   },
 
 ]
