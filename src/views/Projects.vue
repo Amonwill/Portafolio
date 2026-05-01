@@ -38,7 +38,7 @@ const projects = [
     github: 'https://github.com/Amonwill/Portafolio',
     tech: [
       { icon: 'fa-brands fa-vuejs', name: 'Vue.js', style: 'color:#41B883;' },
-      { icon: 'fa-brands fa-php', name: 'PHP', style: 'color:#777BB4;' },
+      { icon: 'fa-brands fa-css3', name: 'CSS3', style: 'color:#777BB4;' },
       { icon: 'fa-brands fa-js', name: 'JS', style: 'color:#F7DF1E;' },
     ],
   }
