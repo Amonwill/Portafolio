@@ -23,7 +23,8 @@ const projects = [
     title: 'Sales Management System',
     desc: 'A comprehensive sales management system designed to streamline sales processes and improve customer relationships.',
     image: TdaModerna,
-    github: 'https://github.com/Amonwill/tndalamoderna',
+    github: 'https://github.com/Amonwill/Tienda',
+    sql: 'https://github.com/Amonwill/La_Moderna_DB',
     tech: [
       { icon: 'fa-brands fa-vuejs', name: 'Vue.js', style: 'color:#41B883;' },
       { icon: 'fa-brands fa-php', name: 'PHP', style: 'color:#777BB4;' },
@@ -34,7 +35,7 @@ const projects = [
     title: 'Portfolio Website',
     desc: 'A comprehensive portfolio website to showcase my work and skills.',
     image: Porta,
-    github: 'https://github.com/Amonwill/tndalamoderna',
+    github: 'https://github.com/Amonwill/Portafolio',
     tech: [
       { icon: 'fa-brands fa-vuejs', name: 'Vue.js', style: 'color:#41B883;' },
       { icon: 'fa-brands fa-php', name: 'PHP', style: 'color:#777BB4;' },

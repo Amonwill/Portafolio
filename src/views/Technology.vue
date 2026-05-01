@@ -75,7 +75,7 @@ const services = [
   },
   {
     title: "Desktop Applications",
-    description: "C#, Python (PyQt) y más, para apps de escritorio multiplataforma y robustas.",
+    description: "C#, Python (PyQt) and Java (JavaFX) to create user-friendly and efficient desktop applications for various purposes.",
   },
   {
     title: "Android Development",
