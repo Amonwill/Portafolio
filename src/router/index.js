@@ -1,10 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router' // <---- AQUÍ
 
 import Home from '../views/Home.vue'
-import AboutMe from '../views/AboutMe.vue'
-import Projects from '../views/Projects.vue'
-import Technology from '../views/Technology.vue'
-import Certifications from '../views/Certifications.vue'
+import AboutMe from '../components/AboutMe/AboutMe.vue'
+import Projects from '../components/Projects/Projects.vue'
+import Technology from '../components/Technology/Technology.vue'
+import Certifications from '../components/Certifications/Certifications.vue'
 
 const routes = [
   { path: '/', redirect: '/home' },
