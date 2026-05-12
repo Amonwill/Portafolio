@@ -70,10 +70,10 @@
 }
 .about-me-photo-img:hover {
   box-shadow:
-    0 0 0 4px var(--card-bg, #fff), 
-    0 0 18px 3px var(--card-glow-a, #1ed760aa),
-    0 0 42px 7px var(--card-glow-b, #40008077),
-    0 0 60px 13px var(--card-glow-c, #ffd70055);
+    0 0 0 4px var(--card-bg), 
+    0 0 18px 3px var(--glow-a),
+    0 0 42px 7px var(--glow-b),
+    0 0 60px 13px var(--glow-c);
   transform: rotate(-5deg) scale(1.045) translateY(-7px);
   z-index: 2;
 }
@@ -163,24 +163,24 @@
   outline: none;
   margin-top: 0;
   letter-spacing: 0.04em;
-  box-shadow: var(--cv-btn-shadow);
+  box-shadow: 0 8px 20px var(--cv-btn-shadow);
   transition: background 0.19s, color 0.17s, box-shadow 0.22s, transform 0.13s;
   cursor: pointer;
 }
 .cv-btn-primary {
   background: var(--cv-btn-bg-main, #1a1a1a);
   color: var(--cv-btn-text-main, #1ed760);
-  box-shadow: 0 8px 24px #1ed76035, 0 1.5px 9px #ffd70022;
+  box-shadow: 0 8px 24px var(--cv-btn-shadow);
 }
 .cv-btn-secondary {
   background: var(--cv-btn-bg-alt, #232323);
   color: var(--cv-btn-text-alt, #7ee1ff);
-  box-shadow: 0 3px 12px #7ee1ff19;
+  box-shadow: 0 3px 12px var(--cv-btn-shadow);
 }
 .cv-btn:hover, .cv-btn:focus {
   background: var(--cv-btn-bg-hover);
   color: var(--cv-btn-text-hover);
-  box-shadow: var(--cv-btn-shadow-hover);
+  box-shadow: var(--cv-btn-shadow);
   transform: translateY(-4px) scale(1.05);
 }
 @media (max-width: 900px) {

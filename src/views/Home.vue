@@ -9,7 +9,7 @@ import Certifications from '../components/Certifications/Certifications.vue'
   <main class="home-content">
     <header id="home" class="home-hero">
       <h1 class="big-hello">WELCOME!</h1>
-      <div class="subtitle-hero">Web Developer & Data Analyst Portfolio</div>
+      <div class="subtitle-hero">Data Analyst Portfolio & Web Developer</div>
     </header>
 
     <AboutMe id="aboutme" />
@@ -23,7 +23,7 @@ import Certifications from '../components/Certifications/Certifications.vue'
 .home-content {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* espaciado xd */
+  gap: .01rem; /* espaciado xd */
   margin-bottom: 4rem;
   position: relative;
   z-index: 1;

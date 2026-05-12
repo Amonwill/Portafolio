@@ -24,7 +24,7 @@ html {
 /* ======= LIGHT MODE ======= */
 :root {
   --bg-main: #f4f7fa;
-  --card-bg: rgba(250, 252, 255, 0.85); /* Un poco de transparencia para ver el fondo */
+  --card-bg: rgba(250, 252, 255, 0.85); 
 
   /* Texto */
   --text-main: #222b2f;
@@ -40,8 +40,8 @@ html {
   --Navbar-hover-bg: #eaf6fa;
 
   /* Acentos */
-  --link-color: #400080;
-  --link-color-hover: #1ed760;
+  --link-color: #5bd6b9;
+  --link-color-hover: #fc5c7d;
 
   /* Glow */
   --glow-a: #5bd6b9;
@@ -49,6 +49,7 @@ html {
   --glow-c: #fc5c7d;
 
   /* CV */
+  --cv-btn-shadow: rgba(236, 72, 153, 0.4);
   --cv-btn-bg-main: linear-gradient(90deg, #5bd6b9 0%, #48c6ef 100%);
   --cv-btn-text-main: #fff;
   --cv-btn-bg-alt: #eaf6ff;
@@ -73,15 +74,19 @@ html {
   --Navbar-hover: #ffd700;
 
   /* CV */
-  --cv-btn-bg-main: #232f1a;
-  --cv-btn-text-main: #1ed760;
+  --cv-btn-shadow: rgba(236, 72, 153, 0.4);
+  --cv-btn-bg-main: #5c0c03;
+  --cv-btn-text-main: #eeeeee;
   --cv-btn-bg-alt: #232323;
   --cv-btn-text-alt: #7ee1ff;
 
-  --glow-a: #ffd700;
+  --glow-a: #ff5e00;
   --glow-b: #ea0000;
   --glow-c: #6a1b20;
-  --title-gradient: linear-gradient(90deg, #ffd700, #ff7c51 60%, #7ee1ff 90%);
+  --title-gradient: linear-gradient(90deg, #ff5e00, #ea0000 60%, #6a1b20 90%);
+
+  --link-color: #800000;
+  --link-color-hover: #057c91;
 }
 
 body {
