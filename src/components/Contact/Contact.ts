@@ -39,12 +39,12 @@ export default {
                     PUBLIC_KEY
                 );
 
-                statusMsg.value = '¡Mensaje enviado con éxito! Te responderé lo antes posible.';
+                statusMsg.value = 'Message sent successfully! I will get back to you as soon as possible.';
                 statusType.value = 'success';
                 form.value = { name: '', email: '', subject: '', message: '' };
 
             } catch (error) {
-                statusMsg.value = 'Hubo un error al enviar el mensaje. Inténtalo de nuevo más tarde.';
+                statusMsg.value = 'Error sending message. Please try again later.';
                 statusType.value = 'error';
                 console.error('EmailJS Error:', error);
             } finally {
