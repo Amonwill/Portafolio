@@ -5,12 +5,14 @@ import AboutMe from '../components/AboutMe/AboutMe.vue'
 import Projects from '../components/Projects/Projects.vue'
 import Technology from '../components/Technology/Technology.vue'
 import Certifications from '../components/Certifications/Certifications.vue'
+import Contact from '../components/Contact/Contact.vue'
 
 const routes = [
   { path: '/', redirect: '/home' },
   { path: '/home',         component: Home },
   { path: '/aboutme',      component: AboutMe },
   { path: '/projects',     component: Projects },
+  { path: '/contact',      component: Contact },
   { path: '/technology',  component: Technology }, 
   { path: '/certificates', component: Certifications },
 ]

@@ -64,7 +64,7 @@ html {
   --card-bg: rgba(22, 22, 22, 0.82);
   --text-main: #fff;
   --content-color: #fff;
-  --h1-color: #ffd700;
+  --h1-color: #ff0000;
   --h2-color: #ffd700;
 
   /* Navbar */

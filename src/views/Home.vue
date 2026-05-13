@@ -3,6 +3,7 @@ import AboutMe from '../components/AboutMe/AboutMe.vue'
 import Projects from '../components/Projects/Projects.vue'
 import Technology from '../components/Technology/Technology.vue'
 import Certifications from '../components/Certifications/Certifications.vue'
+import Contact from '../components/Contact/Contact.vue'
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import Certifications from '../components/Certifications/Certifications.vue'
     <Projects id="projects" />
     <Technology id="technology" />
     <Certifications id="certificates" />
+    <Contact id="contact" />
   </main>
 </template>
 
