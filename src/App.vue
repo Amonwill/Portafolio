@@ -98,6 +98,8 @@ body {
   line-height: 1.5;
   transition: background 0.3s, color 0.3s;
   overflow-x: hidden;
+  top: 0 !important;
+  position: static !important;
 }
 
 h1, h2, h3, h4 {
@@ -117,5 +119,32 @@ h1, h2, h3, h4 {
 .modal-active .global-background {
   filter: blur(15px); 
   transition: filter 0.5s ease;
+}
+
+/* ======= GOOGLE TRANSLATE (reglas globales, no scoped) ======= */
+.goog-te-banner-frame,
+.goog-te-gadget-icon,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+#google_translate_element {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  height: 0;
+  overflow: hidden;
 }
 </style>

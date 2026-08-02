@@ -3,35 +3,40 @@
     <button class="burger" @click="toggleMenu" aria-label="Open Menu">
       <span></span><span></span><span></span>
     </button>
-    
+
     <div class="nav-links" :class="{ open: menuOpen }">
-      <a href="#home" 
-         :class="{ active: currentSection === 'home' }" 
+      <a href="#home"
+         :class="{ active: currentSection === 'home' }"
          @click.prevent="scrollToSection('home')">Home</a>
-         
-      <a href="#aboutme" 
-         :class="{ active: currentSection === 'aboutme' }" 
+
+      <a href="#aboutme"
+         :class="{ active: currentSection === 'aboutme' }"
          @click.prevent="scrollToSection('aboutme')">About Me</a>
-         
-      <a href="#projects" 
-         :class="{ active: currentSection === 'projects' }" 
+
+      <a href="#projects"
+         :class="{ active: currentSection === 'projects' }"
          @click.prevent="scrollToSection('projects')">Projects</a>
-         
-      <a href="#technology" 
-         :class="{ active: currentSection === 'technology' }" 
+
+      <a href="#technology"
+         :class="{ active: currentSection === 'technology' }"
          @click.prevent="scrollToSection('technology')">Technologies</a>
-         
-      <a href="#certificates" 
-         :class="{ active: currentSection === 'certificates' }" 
+
+      <a href="#certificates"
+         :class="{ active: currentSection === 'certificates' }"
          @click.prevent="scrollToSection('certificates')">Certificates</a>
-         
-      <a href="#contact" 
-         :class="{ active: currentSection === 'contact' }" 
+
+      <a href="#contact"
+         :class="{ active: currentSection === 'contact' }"
          @click.prevent="scrollToSection('contact')">Contact</a>
     </div>
 
     <div class="navbar-right">
+      <button class="lang-btn notranslate" @click="toggleLanguage" aria-label="Translate page">
+        {{ currentLang === 'en' ? 'ES' : 'EN' }}
+      </button>
+
       <a href="https://github.com/Amonwill" target="_blank" class="github-btn">GitHub</a>
+
       <div class="dark-toggle">
         <label class="switch">
           <input type="checkbox" :checked="isDark" @change="toggleTheme" />
@@ -42,6 +47,8 @@
         </label>
       </div>
     </div>
+
+    <div id="google_translate_element" class="notranslate"></div>
   </nav>
 </template>
 

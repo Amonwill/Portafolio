@@ -188,7 +188,7 @@ input:checked + .slider:before {
     align-items: flex-start;
     padding: 1.4rem 2rem 2rem 2rem;
     border-bottom: 2px solid var(--Navbar-border, #e0e8ed);
-    border-radius: 0 0 25px 25px; /* Bordes suaves en el menú desplegado */
+    border-radius: 0 0 25px 25px;
     z-index: 102;
     box-shadow: 0 6px 24px rgba(72, 198, 239, 0.13);
     backdrop-filter: blur(12px);
@@ -216,4 +216,26 @@ input:checked + .slider:before {
     gap: 1rem;
     margin-left: 0.7rem;
   }
+}
+.lang-btn {
+  background: transparent;
+  color: var(--Navbar-text, #222b2f);
+  border: 1.5px solid var(--Navbar-border, #e0e8ed);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.lang-btn:hover {
+  color: var(--Navbar-hover, #45a2ff);
+  background: var(--Navbar-hover-bg, #eaf6fa);
+  box-shadow: 0 4px 14px rgba(72, 198, 239, 0.15);
+}
+
+.dark .lang-btn {
+  border-color: rgba(255, 255, 255, 0.1);
 }

@@ -9,7 +9,7 @@
 
     <div class="about-me-card card-hover-effect always-glow">
       <div class="about-me-info">
-        <h1>{{ author.name }}</h1>
+        <h1 class="notranslate">{{ author.name }}</h1>
         <h2>{{ author.role }}</h2>
         <p>{{ author.bio }}</p>
         <div v-html="author.detailedBio" class="detailed-bio"></div>
