@@ -1,3 +1,31 @@
+.section-header {
+  text-align: center;
+  margin-bottom: 4.5rem;
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--h1-color);
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.contact-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-main);
+  opacity: 0.85;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 950px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+}
 .about-me-card {
   display: flex;
   gap: 2.5rem;

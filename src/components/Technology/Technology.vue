@@ -1,5 +1,12 @@
 <template>
   <section class="technologies-section">
+    <div class="section-header">
+      <h1 class="main-title">Technologies</h1>
+      <p class="contact-subtitle">
+        Tools and languages I work with day to day.
+      </p>
+    </div>
+
     <div class="technologies-card card-hover-effect always-glow">
       <div class="tech-sections">
         <div v-for="(icons, category) in groupedSkills" :key="category" class="tech-section">

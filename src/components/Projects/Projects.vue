@@ -1,5 +1,12 @@
 <template>
   <section id="projects" class="projects-section">
+    <div class="section-header">
+      <h1 class="main-title">Projects</h1>
+      <p class="contact-subtitle">
+        A selection of things I've built, from concept to deployment.
+      </p>
+    </div>
+
     <div class="projects-grid">
       <div 
         class="project-card" 

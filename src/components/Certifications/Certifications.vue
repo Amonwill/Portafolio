@@ -1,5 +1,12 @@
 <template>
   <section class="certifications-section">
+    <div class="section-header">
+      <h1 class="main-title">Certifications</h1>
+      <p class="contact-subtitle">
+        Courses and credentials that back up what I know.
+      </p>
+    </div>
+
     <div class="certifications-grid">
       <div 
         v-for="cert in displayedCertifications" 
