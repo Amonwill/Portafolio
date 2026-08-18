@@ -9,24 +9,61 @@
 
     <div class="about-me-card card-hover-effect always-glow">
       <div class="about-me-info">
-        <h1 class="notranslate">{{ author.name }}</h1>
-        <h2>{{ author.role }}</h2>
-        <p>{{ author.bio }}</p>
-        <div v-html="author.detailedBio" class="detailed-bio"></div>
-        
+        <h1 class="notranslate">{{ author?.name }}</h1>
+        <h2>{{ author?.role }}</h2>
+
+        <div v-if="bioParagraphs.length" class="bio-content">
+          <p
+            v-for="(paragraph, index) in bioParagraphs"
+            :key="`bio-${index}`"
+            class="bio-paragraph"
+          >
+            {{ paragraph }}
+          </p>
+        </div>
+
+        <div v-if="detailedBioParagraphs.length" class="detailed-bio">
+          <p
+            v-for="(paragraph, index) in detailedBioParagraphs"
+            :key="`detailed-${index}`"
+            class="bio-paragraph"
+          >
+            {{ paragraph }}
+          </p>
+        </div>
+
         <div class="about-me-links">
-          <a :href="author.linkedin" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-          <a :href="'mailto:' + author.email" target="_blank" rel="noopener"><i class="fas fa-envelope"></i></a>
-          <a :href="author.github" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+          <a :href="author?.linkedin" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+          <a :href="'mailto:' + author?.email" target="_blank" rel="noopener"><i class="fas fa-envelope"></i></a>
+          <a :href="author?.github" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
         </div>
 
         <div class="cv-download-group">
-          <a :href="getFileUrl(author.cvEn.asset._ref)" download class="cv-btn cv-btn-primary">Download CV (EN)</a>
-          <a :href="getFileUrl(author.cvEs.asset._ref)" download class="cv-btn cv-btn-secondary">Descargar CV (ES)</a>
+          <a
+            v-if="author?.cvEn?.asset?._ref"
+            :href="getFileUrl(author.cvEn.asset._ref)"
+            download
+            class="cv-btn cv-btn-primary"
+          >
+            Download CV (EN)
+          </a>
+          <a
+            v-if="author?.cvEs?.asset?._ref"
+            :href="getFileUrl(author.cvEs.asset._ref)"
+            download
+            class="cv-btn cv-btn-secondary"
+          >
+            Descargar CV (ES)
+          </a>
         </div>
       </div>
+
       <div class="about-me-photo">
-        <img class="about-me-photo-img" :src="urlFor(author.photo).url()" alt="William Cruz Hernández" />
+        <img
+          class="about-me-photo-img"
+          :src="author?.photo ? urlFor(author.photo).url() : ''"
+          alt="William Cruz Hernández"
+        />
       </div>
     </div>
   </section>
