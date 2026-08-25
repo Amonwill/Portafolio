@@ -109,9 +109,15 @@ Puedes desplegar tu build en cualquier servicio que soporte frontends estáticos
 ---
 
 ## 📷 **Capturas**
-<img width="1131" height="904" alt="image" src="https://github.com/user-attachments/assets/4bf853f8-65a2-4be8-97f6-f9f42120880e" />
-<img width="1088" height="844" alt="image" src="https://github.com/user-attachments/assets/2289927a-b6ac-4673-8642-d36544b3c1ef" />
+<img width="1920" height="953" alt="image" src="https://github.com/user-attachments/assets/c45fddc6-882c-4143-ada4-e91e32715b42" />
 
+<img width="1920" height="950" alt="image" src="https://github.com/user-attachments/assets/eaae0f4d-08ca-4b14-a5be-e043a389b4dd" />
+
+<img width="1920" height="933" alt="image" src="https://github.com/user-attachments/assets/48ce5df3-d75c-4b69-88aa-837e69fb0c78" />
+
+<img width="1920" height="954" alt="image" src="https://github.com/user-attachments/assets/f56567e6-08b5-4703-8e96-70e3e7c57b06" />
+
+<img width="1920" height="957" alt="image" src="https://github.com/user-attachments/assets/0ddad68d-e2f5-449e-9779-b5ef9baa437d" />
 
 ---
 
