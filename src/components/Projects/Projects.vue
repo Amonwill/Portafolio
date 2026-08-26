@@ -7,18 +7,34 @@
       </p>
     </div>
 
-    <div class="projects-grid">
-      <div 
-        class="project-card" 
-        v-for="(proj, idx) in projects" 
-        :key="idx"
+    <div class="filter-bar" v-if="availableFilters.length > 2">
+      <button
+        v-for="f in availableFilters"
+        :key="f.value"
+        type="button"
+        class="filter-pill"
+        :class="{ 'filter-pill--active': activeFilter === f.value }"
+        @click="setFilter(f.value)"
+      >
+        {{ f.label }}
+      </button>
+    </div>
+
+    <transition-group name="project-fade" tag="div" class="projects-grid" :style="{ '--cols': gridColumns }">
+      <div
+        class="project-card"
+        v-for="proj in filteredProjects"
+        :key="proj.slug ? proj.slug.current : proj.title"
         @click="openProject(proj)"
       >
         <div class="project-img-banner">
           <img :src="urlFor(proj.image).url()" :alt="proj.title" />
         </div>
         <div class="project-info">
-          <h3 class="project-title">{{ proj.title }}</h3>
+          <div class="project-title-row">
+            <h3 class="project-title">{{ proj.title }}</h3>
+            <span v-if="proj.projectType" class="project-type-tag">{{ typeLabel(proj.projectType) }}</span>
+          </div>
           <p class="project-desc">{{ proj.desc }}</p>
           <div class="project-techs">
             <span v-for="t in proj.tech" :key="t.name" class="tech-icon">
@@ -29,12 +45,16 @@
           </div>
         </div>
       </div>
-    </div>
+    </transition-group>
 
-    <ProjectModal 
-      v-if="selectedProject" 
-      :project="selectedProject" 
-      @close="closeProject" 
+    <p v-if="!filteredProjects.length" class="no-results">
+      No projects found for this category yet.
+    </p>
+
+    <ProjectModal
+      v-if="selectedProject"
+      :project="selectedProject"
+      @close="closeProject"
     />
   </section>
 </template>

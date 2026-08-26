@@ -5,13 +5,18 @@
 
       <div class="modal-header">
         <h1>{{ project.title }}</h1>
-        <span
-          v-if="project.status"
-          class="status-badge"
-          :class="project.status.toLowerCase().replace(' ', '-')"
-        >
-          {{ project.status }}
-        </span>
+        <div class="modal-badges">
+          <span v-if="project.projectType" class="type-badge">
+            {{ projectTypeLabel }}
+          </span>
+          <span
+            v-if="project.status"
+            class="status-badge"
+            :class="project.status.toLowerCase().replace(' ', '-')"
+          >
+            {{ project.status }}
+          </span>
+        </div>
       </div>
 
       <div class="modal-body-grid">
@@ -96,6 +101,18 @@ const splitParagraphs = (value) =>
 const descriptionParagraphs = computed(() => {
   const text = props.project?.detailedDesc || props.project?.desc || ''
   return splitParagraphs(text)
+})
+
+// Keep in sync with the `projectType` options defined in the Sanity schema.
+const TYPE_LABELS = {
+  web: 'Web',
+  'data-science': 'Data Science',
+  mobile: 'Mobile App'
+}
+
+const projectTypeLabel = computed(() => {
+  const value = props.project?.projectType
+  return TYPE_LABELS[value] || value
 })
 
 const onKeydown = (event) => {

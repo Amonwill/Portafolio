@@ -61,15 +61,76 @@
 }
 
 .projects-section {
-  max-width: 1200px;
+  max-width: 1320px;
   margin: 2.5rem auto;
   padding: 2rem 1rem;
 }
-.projects-grid {
+
+.filter-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 3.6rem 4.6rem;
   justify-content: center;
+  gap: 0.85rem;
+  margin-bottom: 3rem;
+}
+
+.filter-pill {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--card-bg, rgba(255, 255, 255, 0.06));
+  color: var(--text-main, #fff);
+  font-family: 'Fira Mono', 'Courier New', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.55rem 1.35rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.15s ease;
+}
+
+.filter-pill:hover {
+  transform: translateY(-1px);
+  border-color: var(--glow-b, #45a2ff);
+}
+
+.filter-pill--active {
+  background: linear-gradient(120deg, var(--glow-a, #5bd6b9), var(--glow-b, #45a2ff));
+  border-color: transparent;
+  color: #0c1420;
+}
+
+.no-results {
+  text-align: center;
+  color: var(--text-main, #fff);
+  opacity: 0.7;
+  font-family: 'Fira Mono', 'Courier New', monospace;
+  margin-top: 1.5rem;
+}
+
+.project-fade-enter-active,
+.project-fade-leave-active,
+.project-fade-move {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.project-fade-enter-from,
+.project-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+/* Take leaving cards out of grid flow so the remaining ones can
+   glide into their new spot instead of snapping instantly. */
+.project-fade-leave-active {
+  position: absolute;
+  width: inherit;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 380px));
+  justify-content: center;
+  gap: 3rem 2.6rem;
   align-items: stretch;
 }
 
@@ -77,8 +138,7 @@
   background: var(--card-bg);
   border-radius: 1.2rem;
   overflow: hidden;
-  min-width: 320px;
-  max-width: 355px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -148,14 +208,37 @@
   flex-direction: column;
   justify-content: flex-start;
 }
+.project-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.45rem;
+}
+
 .project-title {
   font-size: 1.23rem;
   font-weight: 800;
   color: var(--h2-color, #45a2ff);
   margin-top: 0;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0;
   letter-spacing: .01em;
   font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.project-type-tag {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  color: var(--glow-b, #45a2ff);
+  background: rgba(69, 162, 255, 0.12);
+  border: 1px solid rgba(69, 162, 255, 0.28);
+  white-space: nowrap;
+  margin-top: 0.15rem;
 }
 .project-desc {
   font-size: 1.01rem;
@@ -212,16 +295,17 @@
 }
 
 @media (max-width: 1200px) {
-  .projects-grid { gap: 2.2rem 2.8rem; }
+  .projects-grid { gap: 2.4rem 2rem; }
 }
-@media (max-width: 1000px) {
-  .projects-grid { gap: 1.3rem 2rem; }
-  .project-card { min-width: 92vw; max-width: 97vw; height: auto; }
+@media (max-width: 900px) {
+  .projects-grid { gap: 1.8rem 1.6rem; }
   .project-img-banner { height: 175px; }
 }
 @media (max-width: 600px) {
   .projects-section { padding: .5rem; }
-  .projects-grid { gap: 1.3rem 0.5rem; }
-  .project-card { min-width: 98vw; max-width: 99vw; height: auto; }
+  .projects-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.3rem;
+  }
   .project-img-banner { height: 110px; }
 }
