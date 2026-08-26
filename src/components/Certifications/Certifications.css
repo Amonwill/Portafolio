@@ -301,3 +301,17 @@
   }
   .badge-img-wrap { width: 78px; height: 78px; }
 }
+/* ---------- Títulos de Separación (Vista combinada) ---------- */
+.category-title {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  color: var(--text-main, #fff);
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  background: var(--title-gradient, linear-gradient(120deg, #fff, #aaa));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

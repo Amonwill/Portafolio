@@ -7,6 +7,7 @@
       </p>
     </div>
 
+    <!-- Pestañas de filtrado (se ocultan si solo tienes un tipo de certificación) -->
     <div class="kind-tabs" v-if="availableKinds.length > 1">
       <button
         v-for="k in availableKinds"
@@ -16,18 +17,17 @@
         :class="{ 'filter-pill--active': activeKind === k.value }"
         @click="setKind(k.value)"
       >
-        {{ k.label }}
+        {{ k?.label }}
       </button>
     </div>
 
-    <!-- Badges: main view, compact grid, more items per page -->
-    <template v-if="activeKind === 'badge'">
-      <div class="badges-grid" :style="{ '--badge-cols': badgeGridColumns }">
-        <div
-          v-for="badge in displayedBadges"
-          :key="badge.title"
-          class="badge-card card-hover-effect"
-        >
+    <!-- SECCIÓN DE INSIGNIAS (Arriba) -->
+    <template v-if="activeKind === 'all' || activeKind === 'badge'">
+      <!-- Título separador solo visible si estamos en la vista combinada y hay insignias -->
+      <h2 v-if="activeKind === 'all' && displayedBadges.length > 0" class="category-title">Badges</h2>
+      
+      <div v-if="displayedBadges.length > 0" class="badges-grid" :style="{ '--badge-cols': badgeGridColumns }">
+        <div v-for="badge in displayedBadges" :key="badge.title" class="badge-card card-hover-effect">
           <div class="badge-img-wrap">
             <img :src="urlFor(badge.image).url()" :alt="badge.title" />
           </div>
@@ -38,39 +38,39 @@
           </div>
         </div>
       </div>
+      
+      <p v-else-if="activeKind === 'badge'" class="no-results">dont have any badges yet.</p>
 
-      <p v-if="!displayedBadges.length" class="no-results">No badges yet.</p>
-
-      <div class="pagination-container">
+      <div class="pagination-container" v-if="displayedBadges.length > 0 && (hasLessBadges || hasMoreBadges)">
         <button v-if="hasLessBadges" @click="showLessBadges" class="cv-btn cv-btn-secondary">
-          <i class="fas fa-chevron-up"></i> Ver Menos
+          <i class="fas fa-chevron-up"></i> see less
         </button>
         <button v-if="hasMoreBadges" @click="showMoreBadges" class="cv-btn cv-btn-primary">
-          Ver Más <i class="fas fa-plus"></i>
+          see more <i class="fas fa-plus"></i>
         </button>
       </div>
     </template>
 
-    <!-- Certificates: unchanged card design and pagination -->
-    <template v-else>
-      <div class="certifications-grid">
-        <div
-          v-for="cert in displayedCertifications"
-          :key="cert.title"
-          class="cert-card card-hover-effect"
-        >
+    <!-- SECCIÓN DE CERTIFICADOS (Abajo) -->
+    <template v-if="activeKind === 'all' || activeKind === 'certificate'">
+      <!-- Título separador dinámico -->
+      <h2 v-if="activeKind === 'all' && displayedCertifications.length > 0" 
+          class="category-title" 
+          :style="displayedBadges.length > 0 ? 'margin-top: 5rem;' : ''">
+        Certificates
+      </h2>
+
+      <div v-if="displayedCertifications.length > 0" class="certifications-grid">
+        <div v-for="cert in displayedCertifications" :key="cert.title" class="cert-card card-hover-effect">
           <div class="cert-img-banner">
             <img :src="urlFor(cert.image).url()" :alt="cert.title" />
           </div>
-
           <div class="cert-info">
             <div class="cert-header-meta">
               <p class="cert-category">{{ cert.category }}</p>
               <span class="cert-year">{{ cert.year }}</span>
             </div>
-
             <h3 class="cert-title">{{ cert.title }}</h3>
-
             <div class="cert-body">
               <p class="cert-desc">{{ cert.description }}</p>
             </div>
@@ -78,19 +78,19 @@
         </div>
       </div>
 
-      <p v-if="!displayedCertifications.length" class="no-results">No certificates yet.</p>
+      <p v-else-if="activeKind === 'certificate'" class="no-results">dont have any certificates yet.</p>
 
-      <div class="pagination-container">
+      <div class="pagination-container" v-if="displayedCertifications.length > 0 && (hasLessCerts || hasMoreCerts)">
         <button v-if="hasLessCerts" @click="showLessCerts" class="cv-btn cv-btn-secondary">
-          <i class="fas fa-chevron-up"></i> Ver Menos
+          <i class="fas fa-chevron-up"></i> see less
         </button>
         <button v-if="hasMoreCerts" @click="showMoreCerts" class="cv-btn cv-btn-primary">
-          Ver Más <i class="fas fa-plus"></i>
+          see more <i class="fas fa-plus"></i>
         </button>
       </div>
     </template>
   </section>
 </template>
 
-<script lang="ts" src="./Certifications.ts" />
-<style scoped src="./Certifications.css" />
+<script lang="ts" src="./Certifications.ts"></script>
+<style scoped src="./Certifications.css"></style>
