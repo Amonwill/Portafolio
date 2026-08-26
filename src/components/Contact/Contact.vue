@@ -12,22 +12,20 @@
       <div class="contact-grid">
         <div class="contact-info">
           
-          <div class="info-item-large">
-            <div class="icon-box-glow">
-              <i class="fas fa-envelope-open-text"></i>
-            </div>
+          <div class="info-item">
+            <i class="fas fa-envelope-open-text"></i>
             <div class="text-group">
               <h4>Email</h4>
-              <p>wcruzhernandez59@gmail.com</p> </div>
+              <p class="email-text">wcruzhernandez59@gmail.com</p> 
+            </div>
           </div>
 
-          <div class="info-item-large">
-            <div class="icon-box-glow">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
             <div class="text-group">
               <h4>Location</h4>
-              <p>CDMX, Mexico</p> </div>
+              <p>CDMX, Mexico</p> 
+            </div>
           </div>
           
           <div class="social-links-large">
@@ -35,7 +33,8 @@
               <i class="fab fa-linkedin"></i>
             </a>
             <a href="https://github.com/Amonwill" target="_blank" class="social-btn">
-              <i class="fab fa-github"></i> </a>
+              <i class="fab fa-github"></i> 
+            </a>
           </div>
         </div>
 

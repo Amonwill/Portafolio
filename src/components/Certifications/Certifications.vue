@@ -7,7 +7,6 @@
       </p>
     </div>
 
-    <!-- Pestañas de filtrado (se ocultan si solo tienes un tipo de certificación) -->
     <div class="kind-tabs" v-if="availableKinds.length > 1">
       <button
         v-for="k in availableKinds"

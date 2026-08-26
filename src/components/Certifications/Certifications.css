@@ -106,13 +106,14 @@
   border-radius: 1.2rem;
   overflow: hidden;
   width: 100%;
-  max-width: 365px; /* Tamaño controlado */
+  max-width: 365px; 
   display: flex;
   flex-direction: column;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 0 15px 1px var(--glow-a, #ffe66222);
+  box-sizing: border-box; 
 }
 .cert-card:hover {
   transform: translateY(-10px) scale(1.02);
@@ -211,10 +212,37 @@
   .certifications-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .certifications-grid { grid-template-columns: 1fr; }
-  .cert-card { max-width: 100%; }
+  .certifications-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 2.5rem 1rem; 
+    padding: 1rem 0.5rem; 
+  }
+  
+  .cert-card { 
+    width: 100%; 
+    max-width: 100%; 
+    margin: 0;
+  }
+  
+  .cert-img-banner {
+    height: 120px;
+  }
+  
+  .cert-info {
+    padding: 1rem; 
+  }
+  
+  .cert-title {
+    font-size: 0.95rem; 
+    height: 2.8rem; 
+    margin-bottom: 0.5rem;
+  }
+  
+  .cert-desc {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
 }
-
 /* ---------- Badges (main view) ---------- */
 
 .badges-grid {
