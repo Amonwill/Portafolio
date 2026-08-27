@@ -1,7 +1,6 @@
 <template>
   <section class="certifications-section">
     <div class="section-header">
-      <!-- Se agregó el eyebrow para mantener consistencia con las otras secciones -->
       <p class="section-eyebrow">Credentials</p>
       <h1 class="main-title">Certifications</h1>
       <p class="contact-subtitle">
@@ -22,9 +21,7 @@
       </button>
     </div>
 
-    <!-- SECCIÓN DE INSIGNIAS (Arriba) -->
     <template v-if="activeKind === 'all' || activeKind === 'badge'">
-      <!-- Título separador solo visible si estamos en la vista combinada y hay insignias -->
       <h2 v-if="activeKind === 'all' && displayedBadges.length > 0" class="category-title">Badges</h2>
       
       <div v-if="displayedBadges.length > 0" class="badges-grid" :style="{ '--badge-cols': badgeGridColumns }">
@@ -52,9 +49,7 @@
       </div>
     </template>
 
-    <!-- SECCIÓN DE CERTIFICADOS (Abajo) -->
     <template v-if="activeKind === 'all' || activeKind === 'certificate'">
-      <!-- Título separador dinámico -->
       <h2 v-if="activeKind === 'all' && displayedCertifications.length > 0" 
           class="category-title" 
           :style="displayedBadges.length > 0 ? 'margin-top: 5rem;' : ''">

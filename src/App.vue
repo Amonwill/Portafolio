@@ -17,7 +17,6 @@ import BackgroundCanvas from './components/Background/BackgroundCanvas.vue'
 
 html {
   scroll-behavior: smooth;
-  /* Evita que Google empuje la etiqueta html */
   margin-top: 0 !important;
 }
 
@@ -49,7 +48,7 @@ html {
   --glow-b: #0d9668;
   --glow-c: #38bdf8;
 
-  /* Toggle del navbar (mismo switch, nueva paleta) */
+  /* Toggle del navbar  */
   --nav-toggle-bg: #c9d6e0;
   --nav-toggle-bg-dark: #2563eb;
 

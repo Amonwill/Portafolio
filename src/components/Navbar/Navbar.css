@@ -1,7 +1,9 @@
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 10px;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   width: fit-content;
   max-width: calc(100vw - 24px);
   margin: 0 auto;
@@ -14,7 +16,7 @@
   gap: 0.9rem;
   padding: 8px 12px;
   box-sizing: border-box;
-  font-family: inherit; /* Eliminada Fira Mono, ahora hereda Montserrat globalmente */
+  font-family: inherit; 
   border-radius: 999px;
   border: 1.5px solid var(--Navbar-border, #e0e8ed);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -106,13 +108,13 @@
 }
 
 .dark .github-btn {
-  background: var(--github-btn-bg, linear-gradient(92deg, #e11d48 0%, #f97316 100%)); /* Actualizado a nueva paleta de gradientes */
+  background: var(--github-btn-bg, linear-gradient(92deg, #e11d48 0%, #f97316 100%)); 
   color: var(--github-btn-text, #ffffff);
   box-shadow: 0 2px 12px rgba(225, 29, 72, 0.16);
 }
 
 .dark .github-btn:hover {
-  background: var(--github-btn-hover-bg, linear-gradient(110deg, #f97316 25%, #e11d48 100%)); /* Actualizado a nueva paleta */
+  background: var(--github-btn-hover-bg, linear-gradient(110deg, #f97316 25%, #e11d48 100%)); 
   color: #ffffff;
   box-shadow: 0 8px 32px rgba(225, 29, 72, 0.3);
 }
@@ -257,16 +259,15 @@ input:checked + .slider:before {
   }
 }
 
-/* Modificaciones para evitar desbordamiento y mejorar vista móvil */
 @media (max-width: 900px) {
   .burger {
     display: flex;
   }
 
   .navbar {
-    width: auto; /* Permitir ajuste natural */
-    max-width: calc(100vw - 24px); /* Margen seguro en laterales */
-    margin: 0 12px; /* Forzar el margen en los lados */
+    width: auto; 
+    max-width: calc(100vw - 24px); 
+    margin: 0 auto; 
     justify-content: space-between;
     padding: 8px 14px;
     border-radius: 18px;
@@ -279,7 +280,7 @@ input:checked + .slider:before {
     top: calc(100% + 8px);
     width: 100%;
     max-width: 100%;
-    box-sizing: border-box; /* Asegurar que el padding no desborde el contenedor */
+    box-sizing: border-box; 
     max-height: calc(100vh - 100px);
     overflow-y: auto;
     background: var(--Navbar-bg, rgba(250, 252, 255, 0.95));
@@ -308,7 +309,7 @@ input:checked + .slider:before {
     text-align: left;
     padding: 0.72em 0.9em;
     border-radius: 12px;
-    font-size: 0.95rem; /* Letra un poco más grande para ser tocada con el dedo */
+    font-size: 0.95rem; 
     box-sizing: border-box;
   }
 
@@ -330,7 +331,7 @@ input:checked + .slider:before {
 @media (max-width: 420px) {
   .navbar {
     top: 8px;
-    margin: 0 8px;
+    margin: 0 auto;
     max-width: calc(100vw - 16px);
     padding: 6px 10px;
     min-height: 50px;

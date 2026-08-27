@@ -121,7 +121,7 @@
 }
 
 .modal-header h1 {
-  font-family: var(--name-font, 'Fraunces', serif); /* Agregado al título del proyecto modal */
+  font-family: var(--name-font, 'Fraunces', serif); 
   font-size: clamp(1.6rem, 2.5vw, 2.5rem);
   margin-bottom: 0.5rem;
   line-height: 1.15;
@@ -217,12 +217,12 @@
 
 .project-desc-paragraph {
   margin: 0 0 0.9rem 0;
-  font-size: 0.92rem; /* Tamaño optimizado para lectura larga */
+  font-size: 0.92rem; 
   line-height: 1.7;
   color: var(--content-color, var(--modal-text-muted));
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  text-align: justify; /* Texto justificado */
+  text-align: justify; 
 }
 
 .project-desc-paragraph:last-child {

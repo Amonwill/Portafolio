@@ -72,7 +72,7 @@
 }
 
 .contact-subtitle {
-  font-size: 1rem; /* Reducido para mayor elegancia */
+  font-size: 1rem; 
   color: var(--text-main);
   opacity: 0.85;
   max-width: 650px;
@@ -82,11 +82,11 @@
 
 .hero-desc {
   color: var(--content-color);
-  font-size: 0.95rem; /* Más profesional */
+  font-size: 0.95rem; 
   line-height: 1.7;
   max-width: 56ch;
   margin: 0 auto 2rem;
-  text-align: justify; /* Texto justificado */
+  text-align: justify; 
 }
 .hero-cta {
   display: flex;
@@ -171,9 +171,6 @@
   }
 }
 
-/* =========================================
-   FOOTER
-   ========================================= */
 .home-footer {
   width: 100%;
   margin-top: 4rem;

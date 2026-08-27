@@ -101,10 +101,6 @@ onMounted(() => {
   window.addEventListener('resize', init);
   window.addEventListener('scroll', handleScroll, { passive: true });
 
-  // El color se relee cada frame directamente desde la clase "dark" del
-  // <html>, así que el cambio de tema se ve reflejado en el siguiente frame
-  // sin necesidad de recrear los nodos ni observar mutaciones del DOM.
-
   onUnmounted(() => {
     cancelAnimationFrame(animationFrame);
     window.removeEventListener('resize', init);

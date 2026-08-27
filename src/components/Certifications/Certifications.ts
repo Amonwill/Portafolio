@@ -1,7 +1,6 @@
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import { client, urlFor } from '../../sanityClient';
 
-// Agregamos la opción 'all' para la vista principal combinada
 const KINDS = [
   { value: 'all', label: 'Todos' },
   { value: 'badge', label: 'Insignias' },
@@ -21,7 +20,6 @@ export default {
   name: 'Certifications',
   setup() {
     const items = ref([]);
-    // Cambiamos el valor por defecto a 'all' para mostrar ambas secciones
     const activeKind = ref('all');
     const maxBadgeCols = ref(4);
 
@@ -47,13 +45,11 @@ export default {
     const badges = computed(() => items.value.filter((c: any) => c.kind === 'badge'));
     const certificates = computed(() => items.value.filter((c: any) => c.kind === 'certificate'));
 
-    // Solo muestra pestañas si realmente hay opciones válidas
     const availableKinds = computed(() => {
       const hasBadges = badges.value.length > 0;
       const hasCerts = certificates.value.length > 0;
       
       const options = [];
-      // Solo mostramos "Todos" si existen de ambos tipos
       if (hasBadges && hasCerts) {
         options.push(KINDS.find(k => k.value === 'all'));
       }

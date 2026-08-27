@@ -103,7 +103,6 @@ const descriptionParagraphs = computed(() => {
   return splitParagraphs(text)
 })
 
-// Keep in sync with the `projectType` options defined in the Sanity schema.
 const TYPE_LABELS = {
   web: 'Web',
   'data-science': 'Data Science',

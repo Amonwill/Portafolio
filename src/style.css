@@ -165,7 +165,7 @@ code {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border-inline: none; /* quita líneas laterales */
+  border-inline: none; 
 }
 
 #center {

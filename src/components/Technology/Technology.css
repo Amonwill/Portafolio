@@ -4,7 +4,6 @@
 }
 
 .section-eyebrow {
-  /* Se eliminó la fuente Fira Mono para heredar Montserrat */
   font-size: 0.74rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -25,7 +24,7 @@
 }
 
 .main-title {
-  font-family: var(--name-font, 'Fraunces', serif); /* Cambia según el modo claro/oscuro */
+  font-family: var(--name-font, 'Fraunces', serif); 
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   color: var(--h1-color);
@@ -44,7 +43,7 @@
 }
 
 .technologies-section {
-  max-width: 1150px; /* Mismo ancho que AboutMe para consistencia */
+  max-width: 1150px; 
   margin: 2.5rem auto;
   padding: 2rem 1.5rem 1rem 1.5rem;
   display: flex;
@@ -53,21 +52,19 @@
   box-sizing: border-box;
 }
 
-/* Nuevo contenedor Grid para las tarjetas individuales */
 .tech-cards-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Fuerza exactamente 3 tarjetas por fila */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 2rem;
   width: 100%;
 }
 @media (max-width: 950px) {
   .tech-cards-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 por fila en tabletas */
+    grid-template-columns: repeat(2, 1fr); 
     gap: 1.5rem;
   }
 }
 
-/* Tarjeta encapsulada para cada tipo de tecnología */
 .tech-card {
   background: var(--card-bg);
   color: var(--content-color);
@@ -142,7 +139,7 @@
 }
 
 .dark .tech-icon {
-  background: rgba(255, 255, 255, 0.05); /* Ligeramente más oscuro en modo dark */
+  background: rgba(255, 255, 255, 0.05); 
 }
 
 .tech-icon:hover {
@@ -153,7 +150,7 @@
 
 @media (max-width: 600px) {
   .tech-cards-container {
-    grid-template-columns: 1fr; /* 1 sola columna en móviles */
+    grid-template-columns: 1fr; 
     gap: 1.5rem;
   }
   .tech-card {
