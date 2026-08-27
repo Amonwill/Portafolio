@@ -82,6 +82,12 @@
   flex: 0 0 auto;
 }
 
+#google_translate_element {
+  max-width: 100%;
+  overflow: hidden;
+  flex-shrink: 1;
+}
+
 .github-btn {
   background: var(--github-btn-bg, linear-gradient(90deg, #2563ebcc 10%, #0d9668cc 95%));
   color: var(--github-btn-text, #fff);
@@ -267,6 +273,8 @@ input:checked + .slider:before {
     width: calc(100vw - 24px);
     max-width: none; 
     justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 6px;
     padding: 8px 14px;
     border-radius: 18px;
   }
@@ -312,7 +320,12 @@ input:checked + .slider:before {
   }
 
   .navbar-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    row-gap: 6px;
     gap: 0.45rem;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .github-btn {
