@@ -53,7 +53,6 @@
 .hero-name {
   font-family: var(--name-font, 'Fraunces', serif);
   font-size: clamp(1rem, 3.5vw, 2.2rem);
-  white-space: nowrap;
   text-transform: uppercase;
   font-weight: 800;
   line-height: 1.05;
@@ -173,6 +172,7 @@
 
 .home-footer {
   width: 100%;
+  box-sizing: border-box; 
   margin-top: 4rem;
   padding: 3rem 1.5rem 4rem 1.5rem;
   text-align: center;
@@ -231,4 +231,4 @@
     font-size: 0.9rem;
     gap: 1rem;
   }
-}
+} 

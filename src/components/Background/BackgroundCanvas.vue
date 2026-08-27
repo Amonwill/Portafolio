@@ -8,8 +8,9 @@ import { ref, onMounted, onUnmounted } from 'vue';
 const canvasRef = ref(null);
 let ctx, animationFrame, nodes = [];
 let scrollFactor = 0;
+let lastWidth = 0;
 
-// Paleta: azul/verde en modo claro, rojos en modo oscuro (misma lógica que App.vue)
+// Paleta: azul/verde en modo claro, rojos en modo oscuro
 const PALETTE = {
   light: { c1: '37,99,235', c2: '13,150,104' },
   dark: { c1: '225,29,72', c2: '242,85,79' }
@@ -30,13 +31,22 @@ const createNodes = (w, h) => {
   }));
 };
 
-const init = () => {
+const init = (forceRecreate = false) => {
   const canvas = canvasRef.value;
   if (!canvas) return;
+  
   ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  nodes = createNodes(canvas.width, canvas.height);
+  
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  
+  canvas.width = w;
+  canvas.height = h;
+
+  if (forceRecreate || w !== lastWidth) {
+    nodes = createNodes(w, h);
+    lastWidth = w;
+  }
 };
 
 const handleScroll = () => {
@@ -47,6 +57,7 @@ const handleScroll = () => {
 const animate = () => {
   const canvas = canvasRef.value;
   if (!canvas || !ctx) return;
+  
   const { width: w, height: h } = canvas;
   const { c1, c2 } = checkDarkMode() ? PALETTE.dark : PALETTE.light;
   const parallax = scrollFactor * 40;
@@ -58,6 +69,7 @@ const animate = () => {
     nodes.forEach((n) => {
       n.x += n.vx;
       n.y += n.vy;
+      // Rebote en los bordes
       if (n.x < 0 || n.x > w) n.vx *= -1;
       if (n.y < 0 || n.y > h) n.vy *= -1;
     });
@@ -71,6 +83,7 @@ const animate = () => {
       const dx = a.x - b.x;
       const dy = (a.y - parallax) - (b.y - parallax);
       const dist = Math.hypot(dx, dy);
+      
       if (dist < 150) {
         ctx.strokeStyle = `rgba(${c1}, ${(1 - dist / 150) * 0.16})`;
         ctx.lineWidth = 1;
@@ -94,18 +107,18 @@ const animate = () => {
 };
 
 onMounted(() => {
-  init();
+  init(true); 
   handleScroll();
   animate();
 
-  window.addEventListener('resize', init);
+  window.addEventListener('resize', () => init(false));
   window.addEventListener('scroll', handleScroll, { passive: true });
+});
 
-  onUnmounted(() => {
-    cancelAnimationFrame(animationFrame);
-    window.removeEventListener('resize', init);
-    window.removeEventListener('scroll', handleScroll);
-  });
+onUnmounted(() => {
+  cancelAnimationFrame(animationFrame);
+  window.removeEventListener('resize', () => init(false));
+  window.removeEventListener('scroll', handleScroll);
 });
 </script>
 
@@ -119,5 +132,6 @@ onMounted(() => {
   z-index: -1;
   pointer-events: none;
   background: transparent;
+  overflow: hidden; 
 }
 </style>

@@ -26,7 +26,6 @@
 .main-title {
   font-family: var(--name-font, 'Fraunces', serif); 
   font-size: clamp(2rem, 5vw, 3.5rem); 
-  white-space: nowrap; 
   font-weight: 800;
   color: var(--h1-color);
   margin-bottom: 1.2rem;
