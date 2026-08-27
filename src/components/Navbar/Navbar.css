@@ -275,7 +275,7 @@ input:checked + .slider:before {
     justify-content: space-between;
     flex-wrap: wrap;
     row-gap: 6px;
-    padding: 8px 14px;
+    padding: 8px 18px 8px 14px;
     border-radius: 18px;
   }
 
@@ -326,6 +326,7 @@ input:checked + .slider:before {
     gap: 0.45rem;
     flex: 1 1 auto;
     min-width: 0;
+    padding-right: 4px;
   }
 
   .github-btn {
