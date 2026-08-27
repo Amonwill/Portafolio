@@ -1,12 +1,11 @@
 .navbar {
-  position: fixed;
+  position: fixed; 
   top: 10px;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000; 
+  width: max-content;
   max-width: calc(100vw - 24px);
-  margin: 0 auto;
   min-height: 56px;
   background: var(--Navbar-bg, rgba(250, 252, 255, 0.58));
   color: var(--Navbar-text, #222b2f);
@@ -265,9 +264,8 @@ input:checked + .slider:before {
   }
 
   .navbar {
-    width: auto; 
-    max-width: calc(100vw - 24px); 
-    margin: 0 auto; 
+    width: calc(100vw - 24px);
+    max-width: none; 
     justify-content: space-between;
     padding: 8px 14px;
     border-radius: 18px;
@@ -331,8 +329,7 @@ input:checked + .slider:before {
 @media (max-width: 420px) {
   .navbar {
     top: 8px;
-    margin: 0 auto;
-    max-width: calc(100vw - 16px);
+    width: calc(100vw - 16px);
     padding: 6px 10px;
     min-height: 50px;
   }
