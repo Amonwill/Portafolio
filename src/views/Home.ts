@@ -1,6 +1,6 @@
 import { ref, onMounted } from 'vue'
 import { client } from '../sanityClient'
-import AboutMe from 'C:/Users/Wcruz/Downloads/Proyectos/Portafolio/src/components/AboutMe/AboutMe.vue'
+import AboutMe from '../components/AboutMe/AboutMe.vue'
 import Projects from '../components/Projects/Projects.vue'
 import Technology from '../components/Technology/Technology.vue'
 import Certifications from '../components/Certifications/Certifications.vue'
