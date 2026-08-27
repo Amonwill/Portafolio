@@ -1,16 +1,27 @@
-<script setup>
-import AboutMe from '../components/AboutMe/AboutMe.vue'
-import Projects from '../components/Projects/Projects.vue'
-import Technology from '../components/Technology/Technology.vue'
-import Certifications from '../components/Certifications/Certifications.vue'
-import Contact from '../components/Contact/Contact.vue'
-</script>
-
 <template>
   <main class="home-content">
     <header id="home" class="home-hero">
-      <h1 class="big-hello">WELCOME!</h1>
-      <div class="subtitle-hero">Data Analyst Portfolio & Web Developer</div>
+      <div class="hero-card card-hover-effect">
+        <p class="hero-eyebrow">Data Analyst · Web Developer</p>
+        <h1 v-if="!loading" class="hero-name notranslate">{{ author?.name }}</h1>
+        <p v-if="!loading && author?.role" class="hero-role">{{ author.role }}</p>
+        <p v-if="!loading && shortBio" class="hero-desc">{{ shortBio }}</p>
+
+        <div class="hero-cta">
+          <button class="btn btn-primary" @click="scrollTo('projects')">
+            see my work
+          </button>
+          <button class="btn btn-ghost" @click="scrollTo('contact')">
+            contact me
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-orb-wrap">
+        <div class="hero-orb" ref="heroOrb"></div>
+      </div>
+
+      <p class="scroll-hint">Scroll to explore ↓</p>
     </header>
 
     <AboutMe id="aboutme" />
@@ -18,50 +29,23 @@ import Contact from '../components/Contact/Contact.vue'
     <Technology id="technology" />
     <Certifications id="certificates" />
     <Contact id="contact" />
+
+    <!-- Nuevo Footer -->
+    <footer class="home-footer">
+      <div class="footer-content">
+        <p>
+          Designed and built by <span class="footer-name notranslate">{{ author?.name }}</span>
+        </p>
+        <p class="footer-meta">
+          &copy; {{ new Date().getFullYear() }} ·
+          <button class="back-to-top" @click="scrollTo('home')">
+            ↑ Back to top
+          </button>
+        </p>
+      </div>
+    </footer>
   </main>
 </template>
 
-<style scoped>
-.home-content {
-  display: flex;
-  flex-direction: column;
-  gap: .01rem; /* espaciado xd */
-  margin-bottom: 4rem;
-  position: relative;
-  z-index: 1;
-}
-
-.home-hero {
-  height: 60vh; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-}
-
-.big-hello {
-  font-size: 3.5rem;
-  font-weight: 800;
-  background: var(--title-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent !important;
-  text-align: center;
-  letter-spacing: 2px;
-}
-
-.subtitle-hero {
-  font-size: 1.3rem;
-  color: var(--h2-color);
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-align: center;
-}
-
-@media (max-width: 600px) {
-  .big-hello { font-size: 2.2rem; }
-  .home-content { gap: 2rem; }
-}
-</style>
+<script lang="ts" src="./Home.ts"></script>
+<style scoped src="./Home.css"></style>

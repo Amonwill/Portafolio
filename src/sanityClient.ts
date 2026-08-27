@@ -1,6 +1,7 @@
 import { createClient } from '@sanity/client'
-import imageUrlBuilder from '@sanity/image-url'
+import { createImageUrlBuilder } from '@sanity/image-url'
 
+// 1. Primero creamos el cliente con tu Project ID real
 export const client = createClient({
   projectId: 'iklvlnau', 
   dataset: 'production',
@@ -8,13 +9,15 @@ export const client = createClient({
   apiVersion: '2024-03-01',
 })
 
-const builder = imageUrlBuilder(client)
+// 2. Luego le pasamos ese cliente al builder de imágenes usando la importación correcta
+const builder = createImageUrlBuilder(client)
 
 export function urlFor(source: any) {
   return builder.image(source)
 }
 
+// 3. Ya con tu Project ID colocado en la URL
 export function getFileUrl(ref: string) {
   const [_file, id, extension] = ref.split('-')
-  return `https://cdn.sanity.io/files/TU_PROJECT_ID/production/${id}.${extension}`
+  return `https://cdn.sanity.io/files/iklvlnau/production/${id}.${extension}`
 }

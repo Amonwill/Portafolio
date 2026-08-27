@@ -3,8 +3,29 @@
   margin-bottom: 4.5rem;
 }
 
+.section-eyebrow {
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--glow-a, #1ed760);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 1rem;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--glow-a, #1ed760);
+  display: inline-block;
+}
+
 .main-title {
-  font-size: 3.5rem;
+  font-family: var(--name-font, 'Fraunces', serif); /* Agregado */
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Responsivo */
   font-weight: 800;
   color: var(--h1-color);
   margin-bottom: 1.2rem;
@@ -13,12 +34,22 @@
 }
 
 .contact-subtitle {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--text-main);
   opacity: 0.85;
   max-width: 650px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+.bio-paragraph {
+  margin: 0 0 0.85rem 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-width: 100%; 
+  line-height: 1.7; /* Mejor interlineado para texto justificado */
+  font-size: 0.92rem; /* Tamaño más fino */
+  text-align: justify; /* Texto justificado */
 }
 
 @media (max-width: 950px) {
@@ -34,7 +65,7 @@
   border-radius: 2.1rem;
   padding: 3rem 2rem;
   margin: 2rem auto;
-  max-width: 980px;
+  max-width: 1150px; 
   align-items: center;
   color: var(--text-main);
   position: relative;
@@ -44,45 +75,20 @@
 
 .card-hover-effect {
   position: relative;
-  transition: box-shadow 0.45s cubic-bezier(.28, .84, .42, 1), transform .16s;
-  box-shadow:
-    0 0 18px 2px var(--glow-a, #1ed760),
-    0 0 36px 6px var(--glow-b, #400080),
-    0 0 74px 14px var(--glow-c, #ffd700);
+  transition: box-shadow 0.35s ease, transform 0.16s;
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.06));
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 .card-hover-effect.always-glow {
-  animation: boxGlowAnimate 3.2s linear infinite;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
+              0 0 15px 1px color-mix(in srgb, var(--glow-a) 25%, transparent);
 }
 
-@keyframes boxGlowAnimate {
-  0% {
-    box-shadow:
-      0 0 16px 2px var(--glow-a, #1ed760),
-      0 0 44px 13px var(--glow-b, #400080),
-      0 0 88px 24px var(--glow-c, #ffd700);
-  }
-
-  33% {
-    box-shadow:
-      0 0 28px 5px var(--glow-b, #400080),
-      0 0 60px 19px var(--glow-c, #ffd700),
-      0 0 18px 7px var(--glow-a, #1ed760);
-  }
-
-  66% {
-    box-shadow:
-      0 0 52px 13px var(--glow-c, #ffd700),
-      0 0 24px 4px var(--glow-a, #1ed760),
-      0 0 43px 12px var(--glow-b, #400080);
-  }
-
-  100% {
-    box-shadow:
-      0 0 16px 2px var(--glow-a, #1ed760),
-      0 0 44px 13px var(--glow-b, #400080),
-      0 0 88px 24px var(--glow-c, #ffd700);
-  }
+.card-hover-effect:hover {
+  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6),
+              0 0 20px 2px color-mix(in srgb, var(--glow-a) 50%, transparent),
+              0 0 35px 4px color-mix(in srgb, var(--glow-b) 30%, transparent);
 }
 
 .about-me-photo {
@@ -109,10 +115,8 @@
 .about-me-photo-img:hover {
   box-shadow:
     0 0 0 4px var(--card-bg),
-    0 0 18px 3px var(--glow-a),
-    0 0 42px 7px var(--glow-b),
-    0 0 60px 13px var(--glow-c);
-  transform: rotate(-5deg) scale(1.045) translateY(-7px);
+    0 0 26px 4px var(--glow-a, rgba(30, 215, 96, 0.35));
+  transform: rotate(-3deg) scale(1.03) translateY(-5px);
   z-index: 2;
 }
 
@@ -146,17 +150,20 @@
 }
 
 .about-me-info h1 {
-  font-size: 2.5rem;
+  font-family: var(--name-font, 'Fraunces', serif);
+  font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+  white-space: nowrap;
   font-weight: 800;
   margin-bottom: 0.2rem;
   background: var(--title-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-transform: uppercase;
 }
 
-.about-me-info h2 {
-  font-family: 'Fira Mono', 'Courier New', monospace;
+.about-me-info h2,
+.about-me-role {
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -178,33 +185,26 @@
   display: block;
 }
 
-.bio-paragraph {
-  margin: 0 0 0.85rem 0;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  text-wrap: pretty;
-  max-width: 65ch;
-  line-height: 1.65;
-  font-size: 0.95rem;
-}
-
 .bio-paragraph:last-child {
   margin-bottom: 0;
 }
 
 .about-me-links {
+  display: flex;
+  gap: 1.5rem;
   margin-top: 1.7rem;
-  font-size: 2rem;
 }
 
 .about-me-links a {
-  margin-right: 1.2rem;
-  color: var(--link-color);
-  transition: color 0.2s;
+  display: inline-block;
+  font-size: 1.8rem;
+  color: var(--h1-color);
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .about-me-links a:hover {
-  color: var(--link-color-hover);
+  color: var(--glow-b);
+  transform: translateY(-3px);
 }
 
 .cv-download-group {
@@ -215,14 +215,22 @@
   flex-wrap: wrap;
 }
 
+.cv-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.5em;
+  vertical-align: -3px;
+}
+
 .cv-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 260px;
   background: var(--cv-btn-bg);
   color: var(--cv-btn-text);
   padding: 1.1em 2.2em;
   border-radius: 12px;
-  font-family: var(--cv-btn-font, 'Fira Mono', monospace);
   text-decoration: none;
   font-size: 1.09rem;
   font-weight: 700;
@@ -373,5 +381,4 @@
     text-align: center;
     margin-top: 1.5rem;
   }
-
 }

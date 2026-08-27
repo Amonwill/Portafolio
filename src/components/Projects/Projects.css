@@ -3,8 +3,30 @@
   margin-bottom: 4.5rem;
 }
 
+.section-eyebrow {
+  /* Se eliminó font-family Fira Mono */
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--glow-a, #5bd6b9);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 1rem;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--glow-a, #5bd6b9);
+  display: inline-block;
+}
+
 .main-title {
-  font-size: 3.5rem;
+  font-family: var(--name-font, 'Fraunces', serif); /* Agregado */
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Responsivo */
   font-weight: 800;
   color: var(--h1-color);
   margin-bottom: 1.2rem;
@@ -13,7 +35,7 @@
 }
 
 .contact-subtitle {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--text-main);
   opacity: 0.85;
   max-width: 650px;
@@ -21,42 +43,18 @@
   line-height: 1.6;
 }
 
+.project-desc {
+  font-size: 0.9rem; /* Más compacto y limpio */
+  color: var(--content-color, #383d42);
+  margin-bottom: .7rem;
+  letter-spacing: .02em;
+  line-height: 1.6;
+  text-align: justify; /* Texto justificado */
+}
+
 @media (max-width: 950px) {
   .main-title {
     font-size: 2.5rem;
-  }
-}
-.section-glow-card {
-  margin-bottom: 2.8rem;
-  position: relative;
-  z-index: 2;
-  box-shadow: none;
-  animation: boxGlowProjectHeader 4s linear infinite;
-}
-@keyframes boxGlowProjectHeader {
-  0% {
-    box-shadow:
-      0 0 11px 2px var(--glow-a, #5bd6b999),
-      0 0 22px 6px var(--glow-b, #45a2ff55),
-      0 0 33px 8px var(--glow-c, #fc5c7d33);
-  }
-  33% {
-    box-shadow:
-      0 0 16px 5px var(--glow-b, #45a2ff44),
-      0 0 24px 8px var(--glow-c, #fc5c7d44),
-      0 0 8px 2px var(--glow-a, #5bd6b977);
-  }
-  66% {
-    box-shadow:
-      0 0 19px 6px var(--glow-c, #fc5c7d44),
-      0 0 10px 3px var(--glow-a, #5bd6b977),
-      0 0 16px 4px var(--glow-b, #45a2ff44);
-  }
-  100% {
-    box-shadow:
-      0 0 11px 2px var(--glow-a, #5bd6b999),
-      0 0 22px 6px var(--glow-b, #45a2ff55),
-      0 0 33px 8px var(--glow-c, #fc5c7d33);
   }
 }
 
@@ -79,7 +77,7 @@
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: var(--card-bg, rgba(255, 255, 255, 0.06));
   color: var(--text-main, #fff);
-  font-family: 'Fira Mono', 'Courier New', monospace;
+  /* Se eliminó font-family Fira Mono */
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -91,11 +89,11 @@
 
 .filter-pill:hover {
   transform: translateY(-1px);
-  border-color: var(--glow-b, #45a2ff);
+  border-color: var(--glow-a, #5bd6b9);
 }
 
 .filter-pill--active {
-  background: linear-gradient(120deg, var(--glow-a, #5bd6b9), var(--glow-b, #45a2ff));
+  background: var(--glow-a, #5bd6b9);
   border-color: transparent;
   color: #0c1420;
 }
@@ -104,7 +102,7 @@
   text-align: center;
   color: var(--text-main, #fff);
   opacity: 0.7;
-  font-family: 'Fira Mono', 'Courier New', monospace;
+  /* Se eliminó font-family Fira Mono */
   margin-top: 1.5rem;
 }
 
@@ -120,8 +118,6 @@
   transform: scale(0.96);
 }
 
-/* Take leaving cards out of grid flow so the remaining ones can
-   glide into their new spot instead of snapping instantly. */
 .project-fade-leave-active {
   position: absolute;
   width: inherit;
@@ -142,47 +138,22 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  box-shadow:
-    0 0 18px 1px var(--glow-a, #5bd6b933),
-    0 2px 10px #0002;
-  transition: box-shadow 0.45s cubic-bezier(.28,.84,.42,1), transform .18s;
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.06));
+  transition: box-shadow 0.3s ease, transform 0.18s ease;
   z-index: 1;
   margin-bottom: 0.7em;
+  /* Glow armónico en reposo */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
+              0 0 15px 1px color-mix(in srgb, var(--glow-a) 25%, transparent);
 }
+
 .project-card:hover {
-  animation: boxGlowProject 3.1s linear infinite;
   z-index: 2;
-  transform: translateY(-8px) scale(1.022);
-}
-@keyframes boxGlowProject {
-  0% {
-    box-shadow:
-      0 0 21px 2px var(--glow-a, #5bd6b977),
-      0 0 34px 9px var(--glow-b, #45a2ff66),
-      0 0 74px 19px var(--glow-c, #fc5c7d44),
-      0 2px 10px #0002;
-  }
-  33% {
-    box-shadow:
-      0 0 28px 8px var(--glow-b, #45a2ff66),
-      0 0 38px 13px var(--glow-c, #fc5c7d44),
-      0 0 18px 7px var(--glow-a, #5bd6b988),
-      0 2px 10px #0002;
-  }
-  66% {
-    box-shadow:
-      0 0 44px 12px var(--glow-c, #fc5c7d44),
-      0 0 14px 4px var(--glow-a, #5bd6b988),
-      0 0 33px 11px var(--glow-b, #45a2ff66),
-      0 2px 10px #0002;
-  }
-  100% {
-    box-shadow:
-      0 0 21px 2px var(--glow-a, #5bd6b977),
-      0 0 34px 9px var(--glow-b, #45a2ff66),
-      0 0 74px 19px var(--glow-c, #fc5c7d44),
-      0 2px 10px #0002;
-  }
+  transform: translateY(-8px) scale(1.015);
+  /* Glow armónico en hover */
+  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6),
+              0 0 20px 2px color-mix(in srgb, var(--glow-a) 50%, transparent),
+              0 0 35px 4px color-mix(in srgb, var(--glow-b) 30%, transparent);
 }
 
 .project-img-banner {
@@ -223,7 +194,7 @@
   margin-top: 0;
   margin-bottom: 0;
   letter-spacing: .01em;
-  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  /* Se eliminó la fuente dura para que herede Montserrat */
 }
 
 .project-type-tag {
@@ -240,14 +211,7 @@
   white-space: nowrap;
   margin-top: 0.15rem;
 }
-.project-desc {
-  font-size: 1.01rem;
-  color: var(--content-color, #383d42);
-  margin-bottom: .7rem;
-  font-family: 'Fira Mono', 'Courier New', monospace;
-  letter-spacing: .03em;
-  text-align: left;
-}
+
 .project-techs {
   display: flex;
   align-items: center;
@@ -261,7 +225,7 @@
   font-size: .95rem;
   margin-right: .5em;
   letter-spacing: .03em;
-  font-family: 'Fira Mono', 'Courier New', monospace;
+  /* Se eliminó font-family Fira Mono */
 }
 .tech-icon i {
   font-size: 1.38rem;
@@ -273,7 +237,7 @@
   object-fit: contain;
   border-radius: 6px;
   background: #232323;
-  box-shadow: 0 0 10px 2px #3ad6b944;
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
   margin-right: .15em;
   vertical-align: middle;
   display: inline-block;

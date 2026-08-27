@@ -14,7 +14,6 @@
 }
 
 .modal-content {
-  /* Light mode (default) — clean frosted-glass card on a light backdrop */
   --modal-glass-bg: linear-gradient(160deg, rgba(255, 255, 255, 0.92), rgba(246, 248, 251, 0.86));
   --modal-glass-border: rgba(15, 23, 42, 0.1);
   --modal-glass-highlight: rgba(255, 255, 255, 0.65);
@@ -46,7 +45,6 @@
 }
 
 .dark .modal-content {
-  /* Dark mode — neon glass card on a dark backdrop */
   --modal-glass-bg: rgba(16, 16, 16, 0.42);
   --modal-glass-border: rgba(255, 255, 255, 0.16);
   --modal-glass-highlight: rgba(255, 255, 255, 0.1);
@@ -60,6 +58,12 @@
   --modal-close-bg: rgba(0, 0, 0, 0.22);
   --modal-close-border: rgba(255, 255, 255, 0.24);
   --modal-inner-edge: rgba(255, 255, 255, 0.38);
+}
+
+.modal-content.always-glow {
+  box-shadow:
+    var(--modal-glass-shadow),
+    0 0 26px 2px var(--glow-a, rgba(30, 215, 96, 0.2));
 }
 
 .modal-content::before {
@@ -117,6 +121,7 @@
 }
 
 .modal-header h1 {
+  font-family: var(--name-font, 'Fraunces', serif); /* Agregado al título del proyecto modal */
   font-size: clamp(1.6rem, 2.5vw, 2.5rem);
   margin-bottom: 0.5rem;
   line-height: 1.15;
@@ -212,12 +217,12 @@
 
 .project-desc-paragraph {
   margin: 0 0 0.9rem 0;
-  font-size: 0.97rem;
-  line-height: 1.65;
+  font-size: 0.92rem; /* Tamaño optimizado para lectura larga */
+  line-height: 1.7;
   color: var(--content-color, var(--modal-text-muted));
   white-space: pre-wrap;
-  text-wrap: pretty;
   overflow-wrap: anywhere;
+  text-align: justify; /* Texto justificado */
 }
 
 .project-desc-paragraph:last-child {
@@ -292,9 +297,6 @@
   gap: 0.85rem;
 }
 
-/* =========================================
-   TABLET (hasta 900px)
-   ========================================= */
 @media (max-width: 900px) {
   .modal-overlay {
     padding: 1rem;
@@ -304,6 +306,14 @@
     padding: 2rem;
     border-radius: 1.5rem;
     max-height: 92vh;
+  }
+
+  .modal-header h1 {
+    text-align: center;
+  }
+
+  .modal-badges {
+    justify-content: center;
   }
 
   .modal-body-grid {
@@ -317,26 +327,28 @@
   }
 
   .right-col {
-    order: -1; /* Mantiene la imagen en la parte superior */
+    order: -1; 
   }
 
-  /* Controlamos la altura máxima de la imagen para que no empuje todo el texto fuera de la pantalla */
   .image-wrapper {
-    max-height: 45vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    box-shadow: none; 
+    max-height: none;
+    display: block;
+    background: var(--modal-surface);
+    border: 1px solid var(--modal-surface-border);
+    box-shadow: none;
   }
 
   .modal-main-img {
-    max-height: 45vh;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain; /* Asegura que la imagen completa se vea sin deformarse ni cortarse */
+    max-height: none;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
     border-radius: 1rem;
+    display: block;
+  }
+
+  .image-stack {
+    gap: 1.25rem;
   }
 
   .project-desc-paragraph {
@@ -345,12 +357,9 @@
   }
 }
 
-/* =========================================
-   MÓVIL (hasta 600px)
-   ========================================= */
 @media (max-width: 600px) {
   .modal-overlay {
-    padding: 0.5rem; /* Maximizamos el espacio reduciendo el fondo oscuro */
+    padding: 0.5rem; 
   }
 
   .modal-content {
@@ -368,12 +377,18 @@
 
   .modal-header h1 {
     font-size: 1.8rem;
-    text-align: center; /* Centramos el título principal */
+    text-align: center; 
   }
 
   .modal-badges {
-    justify-content: center; /* Centramos las insignias */
+    justify-content: center; 
     margin-bottom: 0.5rem;
+  }
+
+  .status-badge,
+  .type-badge {
+    padding: 0.32rem 0.9rem;
+    font-size: 0.72rem;
   }
 
   .modal-body-grid {
@@ -381,29 +396,21 @@
     margin-top: 1rem;
   }
 
-  .image-wrapper {
-    max-height: 38vh; /* La imagen es más pequeña en teléfonos para dar prioridad a la lectura */
-  }
-
-  .modal-main-img {
-    max-height: 38vh;
-  }
-
   .info-section h3 {
-    text-align: center; /* Centramos los subtítulos (About the Project, Technologies) */
+    text-align: center; 
   }
 
   .project-desc-paragraph {
     font-size: 0.9rem;
     line-height: 1.55;
-    text-align: left; /* Mantenemos el párrafo justificado a la izquierda por legibilidad */
+    text-align: left; 
   }
 
   .tech-chips-container {
-    justify-content: center; /* Centramos las burbujas de tecnologías */
+    justify-content: center; 
   }
 
   .modal-links {
-    justify-content: center; /* Centramos los enlaces a GitHub / Web */
+    justify-content: center; 
   }
 }

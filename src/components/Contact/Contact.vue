@@ -1,12 +1,13 @@
 <template>
   <section id="contact" class="contact-section">
     <div class="section-header">
+      <!-- Se agregó el eyebrow para mantener consistencia con las otras secciones -->
+      <p class="section-eyebrow">Get in touch</p>
       <h1 class="main-title">Contact with me</h1>
       <p class="contact-subtitle">
         Do you have a project in mind or are you looking for a technical collaboration?
       </p>
     </div>
-
 
     <div class="contact-container always-glow">
       <div class="contact-grid">
@@ -66,5 +67,5 @@
   </section>
 </template>
 
-<script lang="ts" src="./Contact.ts" />
-<style scoped src="./Contact.css" />
+<script lang="ts" src="./Contact.ts"></script>
+<style scoped src="./Contact.css"></style>

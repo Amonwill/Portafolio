@@ -3,8 +3,30 @@
   margin-bottom: 4.5rem;
 }
 
+.section-eyebrow {
+  /* Se eliminó la fuente Fira Mono para heredar Montserrat */
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--glow-a, #1ed760);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 1rem;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--glow-a, #1ed760);
+  display: inline-block;
+}
+
 .main-title {
-  font-size: 3.5rem;
+  font-family: var(--name-font, 'Fraunces', serif); /* Cambia según el modo claro/oscuro */
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   color: var(--h1-color);
   margin-bottom: 1.2rem;
@@ -21,239 +43,128 @@
   line-height: 1.6;
 }
 
-@media (max-width: 950px) {
-  .main-title {
-    font-size: 2.5rem;
-  }
-}
 .technologies-section {
-  max-width: 1000px;
+  max-width: 1150px; /* Mismo ancho que AboutMe para consistencia */
   margin: 2.5rem auto;
-  padding: 2rem 0 1rem 0;
+  padding: 2rem 1.5rem 1rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
-.section-glow-card {
-  margin-bottom: 2.8rem;
-  position: relative;
-  z-index: 2;
-  box-shadow: none;
-  animation: boxGlowSection 4s linear infinite;
+/* Nuevo contenedor Grid para las tarjetas individuales */
+.tech-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Fuerza exactamente 3 tarjetas por fila */
+  gap: 2rem;
+  width: 100%;
 }
-@keyframes boxGlowSection {
-  0% {
-    box-shadow:
-      0 0 10px 1.5px var(--glow-a, #1ed76099),
-      0 0 22px 5.5px var(--glow-b, #40008066),
-      0 0 36px 8.5px var(--glow-c, #ffd70044);
-  }
-  33% {
-    box-shadow:
-      0 0 18px 4px var(--glow-b, #40008077),
-      0 0 30px 7px var(--glow-c, #ffd70033),
-      0 0 10px 3px var(--glow-a, #1ed76099);
-  }
-  66% {
-    box-shadow:
-      0 0 25px 6px var(--glow-c, #ffd70033),
-      0 0 12px 3px var(--glow-a, #1ed76099),
-      0 0 22px 5px var(--glow-b, #40008066);
-  }
-  100% {
-    box-shadow:
-      0 0 10px 1.5px var(--glow-a, #1ed76099),
-      0 0 22px 5.5px var(--glow-b, #40008066),
-      0 0 36px 8.5px var(--glow-c, #ffd70044);
+@media (max-width: 950px) {
+  .tech-cards-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 por fila en tabletas */
+    gap: 1.5rem;
   }
 }
 
-.services-row {
-  display: flex;
-  gap: 2.2rem;
-  justify-content: center;
-  align-items: stretch;
-  margin-bottom: 2.7rem;
-  flex-wrap: wrap;
-}
-.service-card {
-  background: var(--card-bg, #181818);
-  border-radius: 1.2rem;
-  box-shadow: 0 0 8px 1.5px var(--glow-a, #ffd70022), 0 2px 8px #0002;
-  min-width: 240px;
-  max-width: 332px;
-  padding: 2.1em 1.38em 1.38em 1.38em;
-  text-align: center;
-  transition: 
-    box-shadow 0.4s cubic-bezier(.29,.73,.44,1),
-    transform 0.18s cubic-bezier(.45,.2,.34,1);
-  position: relative;
-  z-index: 1;
-  margin-bottom: 1em;
-}
-.service-card:hover {
-  transform: translateY(-7px) scale(1.033);
-  box-shadow:
-    0 0 15px 3px var(--glow-a, #1ed76055),
-    0 0 25px 8px var(--glow-b, #40008033),
-    0 0 19px 6px var(--glow-c, #ffd70022),
-    0 2px 14px #0002;
-  z-index: 2;
-}
-
-.service-title {
-  font-size: 1.19rem;
-  font-weight: 800;
-  margin-bottom: .65em;
-  background: var(--title-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.service-desc {
-  color: var(--content-color);
-  opacity: .93;
-  font-size: 1.07rem;
-  font-family: inherit;
-  line-height: 1.37;
-  margin: 0 auto;
-  max-width: 25em;
-  word-break: break-word;
-  text-align: center;
-}
-.service-desc ul {
-  margin: .4em 0 0 1em; padding: 0;
-  text-align: left;
-}
-.service-desc li {
-  margin: .18em 0;
-  font-size: 1.05em;
-}
-
-.technologies-card {
+/* Tarjeta encapsulada para cada tipo de tecnología */
+.tech-card {
   background: var(--card-bg);
   color: var(--content-color);
   border-radius: 1.5rem;
-  max-width: 880px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2.7rem 2.2rem 1.7rem 2.2rem;
+  padding: 2.5rem 2rem;
   position: relative;
   z-index: 1;
   box-sizing: border-box;
-  overflow-x: clip;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-@media (max-width: 1000px) {
-  .technologies-card {
-    min-width: 92vw;
-    max-width: 97vw;
-    padding: 1.5rem 1rem 1.2rem 1rem;
-  }
-}
-@media (max-width: 600px) {
-  .technologies-card {
-    min-width: 98vw;
-    max-width: 99vw;
-    padding: 1.2rem 0.3rem 1.1rem 0.3rem;
-  }
-}
+
 .card-hover-effect {
-  box-shadow: 0 0 4px 0.5px var(--glow-a, #ffd70018), 0 2px 10px #0002;
-  transition: box-shadow 0.45s cubic-bezier(.28,.84,.42,1), transform .16s;
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.06));
+  transition: box-shadow 0.3s ease, transform 0.16s;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
+
 .card-hover-effect.always-glow {
-  animation: boxGlowTechnologiesSutil 4.2s linear infinite;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
+              0 0 15px 1px color-mix(in srgb, var(--glow-a) 25%, transparent);
 }
 
-@keyframes boxGlowTechnologiesSutil {
-  0% {
-    box-shadow:
-      0 0 7px 1.5px var(--glow-a, #1ed76033),
-      0 0 14px 3.7px var(--glow-b, #40008022),
-      0 0 16px 4.5px var(--glow-c, #ffd70012),
-      0 2px 10px #0002;
-  }
-  33% {
-    box-shadow:
-      0 0 10px 2.5px var(--glow-b, #40008022),
-      0 0 15px 4.2px var(--glow-c, #ffd70013),
-      0 0 5px 1.2px var(--glow-a, #1ed76022),
-      0 2px 10px #0002;
-  }
-  66% {
-    box-shadow:
-      0 0 14px 3px var(--glow-c, #ffd70013),
-      0 0 7px 2px var(--glow-a, #1ed76033),
-      0 0 11px 2.5px var(--glow-b, #40008022),
-      0 2px 10px #0002;
-  }
-  100% {
-    box-shadow:
-      0 0 7px 1.5px var(--glow-a, #1ed76033),
-      0 0 14px 3.7px var(--glow-b, #40008022),
-      0 0 16px 4.5px var(--glow-c, #ffd70012),
-      0 2px 10px #0002;
-  }
+.card-hover-effect:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6),
+              0 0 20px 2px color-mix(in srgb, var(--glow-a) 50%, transparent),
+              0 0 35px 4px color-mix(in srgb, var(--glow-b) 30%, transparent);
 }
 
-.tech-sections {
-  margin-top: 1rem;
-}
-.tech-section {
-  margin-bottom: 1.7rem;
-}
-.tech-section h3 {
+.tech-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   color: var(--h2-color);
-  margin-bottom: .55rem;
-  margin-top: .5rem;
-  font-size: 1.15rem;
-  letter-spacing: .01em;
-  font-weight: 600;
+  margin: 0 0 1.8rem 0;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  font-weight: 700;
 }
+
+.tech-card h3::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--glow-a, #1ed760);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 .icons-list {
   display: flex;
-  gap: 1.4rem 1.2rem;
+  gap: 1.2rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin-bottom: .8rem;
 }
+
 .tech-icon {
   width: 48px;
   height: 48px;
-  background: #fff2;
-  border-radius: .66rem;
-  padding: .3rem;
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 0.66rem;
+  padding: 0.4rem;
   object-fit: contain;
-  box-shadow: 0 1.5px 5px #3333;
-  transition: box-shadow .18s, transform .17s, background .18s;
-}
-.tech-icon:hover {
-  box-shadow: 0 0 12px 3px var(--card-glow), 0 2px 10px #1114;
-  transform: scale(1.085);
-  background: #fff5;
+  box-shadow: 0 1.5px 5px rgba(51, 51, 51, 0.2);
+  transition: box-shadow 0.18s, transform 0.17s, background 0.18s;
 }
 
-@media (max-width: 950px) {
-  .services-row {
-    flex-direction: column;
-    gap: 1.2rem;
-    align-items: center;
-  }
+.dark .tech-icon {
+  background: rgba(255, 255, 255, 0.05); /* Ligeramente más oscuro en modo dark */
 }
+
+.tech-icon:hover {
+  box-shadow: 0 0 12px 3px var(--glow-a, rgba(30, 215, 96, 0.35)), 0 2px 10px rgba(17, 17, 17, 0.26);
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.33);
+}
+
 @media (max-width: 600px) {
-  .technologies-card {
-    padding: 1.2rem .7rem;
+  .tech-cards-container {
+    grid-template-columns: 1fr; /* 1 sola columna en móviles */
+    gap: 1.5rem;
+  }
+  .tech-card {
+    padding: 2rem 1rem;
   }
   .tech-icon {
-    width: 38px;
-    height: 38px;
-    padding: .15rem;
+    width: 42px;
+    height: 42px;
+    padding: 0.3rem;
   }
-  .service-card {
-    min-width: 96vw;
-    max-width: 99vw;
-    padding: 1.2em .8em;
+  .main-title {
+    font-size: 2.5rem;
   }
 }

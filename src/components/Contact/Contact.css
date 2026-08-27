@@ -5,14 +5,36 @@
   position: relative;
 }
 
-
 .section-header {
   text-align: center;
   margin-bottom: 4.5rem; 
 }
 
+/* Estilos para el Eyebrow */
+.section-eyebrow {
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--glow-a, #1ed760);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 1rem;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--glow-a, #1ed760);
+  display: inline-block;
+}
+
 .main-title {
-  font-size: 3.5rem;
+  font-family: var(--name-font, 'Fraunces', serif); /* Dinámico */
+  font-size: clamp(1.5rem, 5vw, 3.5rem); /* Ajustado para no desbordar en móvil */
+  white-space: nowrap; 
   font-weight: 800;
   color: var(--h1-color); 
   margin-bottom: 1.2rem;
@@ -21,12 +43,23 @@
 }
 
 .contact-subtitle {
-  font-size: 1.25rem;
-  color: var(--text-main); 
+  font-size: 1rem;
+  color: var(--text-main);
   opacity: 0.85;
   max-width: 650px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+.info-item p {
+  margin: 0.3rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  opacity: 0.8;
+  color: var(--content-color);
+  word-break: break-word; 
+  overflow-wrap: break-word;
+  text-align: justify; /* Texto justificado */
 }
 
 .contact-container {
@@ -41,10 +74,12 @@
 
 @keyframes boxGlowContact {
   0%, 100% {
-    box-shadow: 0 0 20px 2px var(--glow-a), 0 0 40px 5px var(--glow-b);
+    box-shadow: 0 0 20px 1px color-mix(in srgb, var(--glow-a) 30%, transparent),
+                0 0 40px 2px color-mix(in srgb, var(--glow-b) 15%, transparent);
   }
   50% {
-    box-shadow: 0 0 30px 4px var(--glow-b), 0 0 50px 8px var(--glow-c);
+    box-shadow: 0 0 30px 2px color-mix(in srgb, var(--glow-a) 40%, transparent),
+                0 0 50px 4px color-mix(in srgb, var(--glow-b) 25%, transparent);
   }
 }
 
@@ -73,13 +108,24 @@
 }
 
 .info-item i {
-  font-size: 2rem;
-  color: var(--h1-color);
-  background: var(--cv-btn-bg-main);
-  filter: opacity(0.2); 
-  padding: 1.3rem;
+  font-size: 1.8rem;
+  color: var(--h1-color); /* Color vibrante principal (Azul o Rojo) */
+  background: var(--Navbar-hover-bg); /* Fondo suave adaptado a claro/oscuro */
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 1.2rem;
-  border: 1px solid var(--h1-color);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  flex-shrink: 0; /* Evita que el cuadro se apachurre */
+  transition: all 0.3s ease;
+}
+.info-item:hover i {
+  background: var(--h1-color);
+  color: var(--card-bg);
+  box-shadow: 0 0 20px var(--glow-a);
+  border-color: var(--h1-color);
 }
 
 .info-item h4 {
@@ -87,15 +133,6 @@
   font-size: 1.4rem;
   font-weight: 800;
   color: var(--text-main);
-}
-
-.info-item p {
-  margin: 0.3rem 0 0;
-  font-size: 1.05rem;
-  opacity: 0.8;
-  color: var(--content-color);
-  word-break: break-word; 
-  overflow-wrap: break-word;
 }
 
 .contact-form {
@@ -113,7 +150,7 @@
   border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
   border-radius: 16px;
   color: var(--text-main);
-  font-family: 'Montserrat', sans-serif;
+  font-family: inherit; /* Cambiado para heredar la fuente global (Montserrat) */
   font-size: 1rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }

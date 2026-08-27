@@ -1,6 +1,8 @@
 <template>
   <section class="certifications-section">
     <div class="section-header">
+      <!-- Se agregó el eyebrow para mantener consistencia con las otras secciones -->
+      <p class="section-eyebrow">Credentials</p>
       <h1 class="main-title">Certifications</h1>
       <p class="contact-subtitle">
         Courses and credentials that back up what I know.

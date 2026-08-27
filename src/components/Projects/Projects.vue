@@ -1,6 +1,7 @@
 <template>
   <section id="projects" class="projects-section">
     <div class="section-header">
+      <p class="section-eyebrow">Work</p>
       <h1 class="main-title">Projects</h1>
       <p class="contact-subtitle">
         A selection of things I've built, from concept to deployment.

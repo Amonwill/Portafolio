@@ -17,87 +17,104 @@ import BackgroundCanvas from './components/Background/BackgroundCanvas.vue'
 
 html {
   scroll-behavior: smooth;
+  /* Evita que Google empuje la etiqueta html */
+  margin-top: 0 !important;
 }
 
-/* ======= LIGHT MODE ======= */
+/* ======= LIGHT MODE — azules / verdes ======= */
 :root {
-  --bg-main: #f4f7fa;
-  --card-bg: rgba(250, 252, 255, 0.85);
+  --bg-main: #eef4f4;
+  --card-bg: rgba(240, 247, 246, 0.85);
 
+  --name-font: 'Fraunces', serif;
   /* Texto */
-  --text-main: #222b2f;
-  --content-color: #383d42;
-  --h1-color: #45a2ff;
-  --h2-color: #0f6fa5;
+  --text-main: #0d1b26;
+  --content-color: #3c5464;
+  --h1-color: #2563eb;
+  --h2-color: #0d9668;
 
   /* Navbar */
-  --Navbar-bg: rgba(250, 252, 255, 0.58);
-  --Navbar-text: #222b2f;
-  --Navbar-border: #e0e8ed;
-  --Navbar-hover: #45a2ff;
-  --Navbar-hover-bg: #eaf6fa;
+  --Navbar-bg: rgba(240, 247, 246, 0.6);
+  --Navbar-text: #0d1b26;
+  --Navbar-border: #dbe6e6;
+  --Navbar-hover: #2563eb;
+  --Navbar-hover-bg: #e7f0fb;
 
   /* Acentos */
-  --link-color: #5bd6b9;
-  --link-color-hover: #fc5c7d;
+  --link-color: #0d9668;
+  --link-color-hover: #2563eb;
 
   /* Glow */
-  --glow-a: #5bd6b9;
-  --glow-b: #45a2ff;
-  --glow-c: #fc5c7d;
+  --glow-a: #2563eb;
+  --glow-b: #0d9668;
+  --glow-c: #38bdf8;
+
+  /* Toggle del navbar (mismo switch, nueva paleta) */
+  --nav-toggle-bg: #c9d6e0;
+  --nav-toggle-bg-dark: #2563eb;
 
   /* CV */
-  --cv-btn-shadow: rgba(236, 72, 153, 0.4);
-  --cv-btn-bg-main: linear-gradient(90deg, #5bd6b9 0%, #48c6ef 100%);
+  --cv-btn-shadow: rgba(37, 99, 235, 0.35);
+  --cv-btn-bg-main: linear-gradient(90deg, #2563eb 0%, #0d9668 100%);
   --cv-btn-text-main: #fff;
-  --cv-btn-bg-alt: #eaf6ff;
-  --cv-btn-text-alt: #48c6ef;
+  --cv-btn-bg-alt: #e7f0fb;
+  --cv-btn-text-alt: #2563eb;
 
-  --title-gradient: linear-gradient(90deg, #5bd6b9, #48c6ef 60%, #fc5c7d 100%);
+  --title-gradient: linear-gradient(90deg, #2563eb, #0d9668 60%, #38bdf8 100%);
 
   /* Liquid Glass */
   --glass-bg: rgba(255, 255, 255, 0.26);
   --glass-border: rgba(255, 255, 255, 0.42);
   --glass-highlight: rgba(255, 255, 255, 0.52);
-  --glass-shadow: 0 10px 30px rgba(43, 76, 112, 0.14), 0 2px 10px rgba(69, 162, 255, 0.18);
+  --glass-shadow: 0 10px 30px rgba(13, 27, 42, 0.14), 0 2px 10px rgba(37, 99, 235, 0.16);
   --glass-blur: 18px;
 }
 
-/* ======= DARK MODE ======= */
+/* ======= DARK MODE — Familia Fuego / Atardecer ======= */
 .dark {
-  --bg-main: #050505;
-  --card-bg: rgba(22, 22, 22, 0.82);
-  --text-main: #fff;
-  --content-color: #fff;
-  --h1-color: #ff0000;
-  --h2-color: #ffd700;
+  --name-font: 'Montserrat', sans-serif; 
+  --bg-main: #150a0a;
+  --card-bg: rgba(28, 13, 13, 0.82);
+  --text-main: #f7ece8;
+  --content-color: #f0ddd8;
+  --h1-color: #e11d48;
+  --h2-color: #f97316;
 
   /* Navbar */
-  --Navbar-bg: rgba(24, 24, 24, 0.48);
-  --Navbar-text: #fff;
-  --Navbar-border: #333;
-  --Navbar-hover: #ffd700;
+  --Navbar-bg: rgba(28, 13, 13, 0.5);
+  --Navbar-text: #f7ece8;
+  --Navbar-border: #3a1414;
+  --Navbar-hover: #f97316;
+  --Navbar-hover-bg: rgba(225, 29, 72, 0.16);
+
+  /* Toggle del navbar */
+  --nav-toggle-bg: #3a1414;
+  --nav-toggle-bg-dark: #e11d48;
 
   /* CV */
-  --cv-btn-shadow: rgba(236, 72, 153, 0.4);
-  --cv-btn-bg-main: #5c0c03;
-  --cv-btn-text-main: #eeeeee;
-  --cv-btn-bg-alt: #232323;
-  --cv-btn-text-alt: #7ee1ff;
+  --cv-btn-shadow: rgba(225, 29, 72, 0.4);
+  --cv-btn-bg-main: linear-gradient(90deg, #e11d48 0%, #f97316 100%);
+  --cv-btn-text-main: #fff;
+  --cv-btn-bg-alt: #241010;
+  --cv-btn-text-alt: #f97316;
 
-  --glow-a: #ff5e00;
-  --glow-b: #ea0000;
-  --glow-c: #6a1b20;
-  --title-gradient: linear-gradient(90deg, #ff5e00, #ea0000 60%, #6a1b20 90%);
+  /* Glow */
+  --glow-a: #e11d48; 
+  --glow-b: #f97316; 
+  --glow-c: #facc15; 
 
-  --link-color: #800000;
-  --link-color-hover: #057c91;
+  /* Título */
+  --title-gradient: linear-gradient(90deg, var(--glow-a), var(--glow-b) 60%, var(--glow-c) 100%);
+
+  /* Enlaces */
+  --link-color: #f97316;
+  --link-color-hover: #e11d48;
 
   /* Liquid Glass */
-  --glass-bg: rgba(16, 16, 16, 0.42);
-  --glass-border: rgba(255, 255, 255, 0.16);
-  --glass-highlight: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 14px 34px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(255, 0, 0, 0.16);
+  --glass-bg: rgba(30, 10, 10, 0.42);
+  --glass-border: rgba(247, 231, 227, 0.14);
+  --glass-highlight: rgba(247, 231, 227, 0.08);
+  --glass-shadow: 0 14px 34px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(225, 29, 72, 0.18);
   --glass-blur: 20px;
 }
 
@@ -110,8 +127,9 @@ body {
   line-height: 1.5;
   transition: background 0.3s, color 0.3s;
   overflow-x: hidden;
+  /* Reglas para evitar que Google empuje la página */
   top: 0 !important;
-  position: static !important;
+  position: relative !important; 
 }
 
 h1,
@@ -221,30 +239,41 @@ h4 {
   }
 }
 
-/* ======= GOOGLE TRANSLATE (reglas globales, no scoped) ======= */
-.goog-te-banner-frame,
-.goog-te-gadget-icon,
-iframe.goog-te-banner-frame {
+/* ======= GOOGLE TRANSLATE OVERRIDES ======= */
+/* 1. Ocultar el iframe del banner superior */
+iframe.goog-te-banner-frame,
+.goog-te-banner-frame {
   display: none !important;
   visibility: hidden !important;
   height: 0 !important;
 }
 
-.goog-tooltip,
-.goog-tooltip:hover {
+/* 2. Ocultar el espacio en blanco inyectado */
+.skiptranslate > iframe.goog-te-banner-frame {
   display: none !important;
 }
 
+/* 3. Evitar el cuadro que empuja la página */
+body > .skiptranslate {
+  display: none !important;
+}
+
+/* 4. Eliminar el globo flotante que aparece al pasar el cursor */
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* 5. Quitar fondo amarillo y borde a la palabra traducida */
 .goog-text-highlight {
-  background: none !important;
+  background-color: transparent !important;
+  border: none !important;
   box-shadow: none !important;
 }
 
+/* 6. Esconder el widget genérico */
 #google_translate_element {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-  height: 0;
-  overflow: hidden;
+  display: none !important;
 }
 </style>
