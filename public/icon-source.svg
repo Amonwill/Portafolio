@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="440" x2="440" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#0D9668"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <!-- barras ascendentes en blanco, mismo motivo que el favicon -->
+  <rect x="140" y="290" width="70" height="110" rx="10" fill="#ffffff"/>
+  <rect x="230" y="220" width="70" height="180" rx="10" fill="#ffffff"/>
+  <rect x="320" y="150" width="70" height="250" rx="10" fill="#ffffff"/>
+
+  <!-- punto de dato destacado -->
+  <circle cx="355" cy="118" r="30" fill="#ffffff"/>
+</svg>

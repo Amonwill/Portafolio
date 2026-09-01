@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="markGradient" x1="4" y1="27" x2="28" y2="5" gradientUnits="userSpaceOnUse">
+      <stop class="g1" offset="0" stop-color="#2563EB"/>
+      <stop class="g2" offset="1" stop-color="#0D9668"/>
+    </linearGradient>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        .g1 { stop-color: #E11D48; }
+        .g2 { stop-color: #F2554F; }
+      }
+    </style>
+  </defs>
+
+  <!-- barras ascendentes: el "análisis" -->
+  <rect x="6" y="19" width="6" height="8" rx="0.9" fill="url(#markGradient)"/>
+  <rect x="14" y="13" width="6" height="14" rx="0.9" fill="url(#markGradient)"/>
+  <rect x="22" y="7" width="6" height="20" rx="0.9" fill="url(#markGradient)"/>
+
+  <!-- punto de dato destacado, sobre la barra más alta -->
+  <circle cx="25" cy="4.6" r="1.9" fill="url(#markGradient)"/>
+</svg>
