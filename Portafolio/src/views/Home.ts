@@ -5,6 +5,7 @@ import Projects from '../components/Projects/Projects.vue'
 import Technology from '../components/Technology/Technology.vue'
 import Certifications from '../components/Certifications/Certifications.vue'
 import Contact from '../components/Contact/Contact.vue'
+
 type Author = {
   name?: string
   role?: string
