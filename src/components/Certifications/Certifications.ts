@@ -16,13 +16,19 @@ const AREAS = [
 ];
 
 const BADGE_STEP = 12;
-const CERT_STEP = 8;
+const CERT_STEP_MOBILE = 4;
+const CERT_STEP_DESKTOP = 8;
 
 const getMaxBadgeCols = (width: number) => {
   if (width <= 600) return 2;
   if (width <= 900) return 3;
   return 4;
 };
+
+const getCertStep = (width: number) => (width <= 768 ? CERT_STEP_MOBILE : CERT_STEP_DESKTOP);
+
+const byRecency = (a: any, b: any) =>
+  new Date(b._createdAt || 0).getTime() - new Date(a._createdAt || 0).getTime();
 
 const processCertifications = (data: any[]) => {
   return data.map(cert => ({
@@ -38,8 +44,9 @@ export default {
     const activeArea = ref('all');
     const maxBadgeCols = ref(4);
 
+    const certStep = ref(CERT_STEP_DESKTOP);
     const visibleBadgeCount = ref(BADGE_STEP);
-    const visibleCertCount = ref(CERT_STEP);
+    const visibleCertCount = ref(CERT_STEP_DESKTOP);
 
     const certificadoSeleccionado = ref<any>(null);
     const abrirModal = (cert: any) => {
@@ -51,11 +58,14 @@ export default {
       document.body.style.overflow = '';
     };
 
-    const updateMaxBadgeCols = () => { maxBadgeCols.value = getMaxBadgeCols(window.innerWidth); };
+    const updateMaxBadgeCols = () => {
+      maxBadgeCols.value = getMaxBadgeCols(window.innerWidth);
+      certStep.value = getCertStep(window.innerWidth);
+    };
 
     const fetchCerts = async () => {
-      const query = `*[_type == "certification"] | order(year desc) {
-        _id, title, kind, category, area, year, description, credlyUrl,
+      const query = `*[_type == "certification"] | order(_createdAt desc) {
+        _id, _createdAt, title, kind, category, area, year, description, credlyUrl,
         badgeImage,
         "badgeAspectRatio": badgeImage.asset->metadata.dimensions.aspectRatio,
         certificateImage,
@@ -65,7 +75,9 @@ export default {
       items.value = processCertifications(rawData);
     };
 
-    const rawBadges = computed(() => items.value.filter((c: any) => c.kind === 'badge'));
+    const rawBadges = computed(() =>
+      items.value.filter((c: any) => c.kind === 'badge').slice().sort(byRecency)
+    );
 
     const badges = computed(() =>
       rawBadges.value.map((b: any) => ({
@@ -98,6 +110,8 @@ export default {
     const standaloneCertificates = computed(() =>
       items.value
         .filter((c: any) => c.kind === 'certificate')
+        .slice()
+        .sort(byRecency)
         .map((c: any) => {
           const visual = c.certificateImage ? {
             type: 'image', src: urlFor(c.certificateImage).url()
@@ -119,7 +133,7 @@ export default {
 
     const setArea = (value: string) => {
       activeArea.value = value;
-      visibleCertCount.value = CERT_STEP;
+      visibleCertCount.value = certStep.value;
     };
 
     const areaFilteredCertificates = computed(() =>
@@ -137,14 +151,15 @@ export default {
 
     const displayedCertifications = computed(() => areaFilteredCertificates.value.slice(0, visibleCertCount.value));
     const hasMoreCerts = computed(() => visibleCertCount.value < areaFilteredCertificates.value.length);
-    const hasLessCerts = computed(() => visibleCertCount.value > CERT_STEP);
+    const hasLessCerts = computed(() => visibleCertCount.value > certStep.value);
 
-    const showMoreCerts = () => (visibleCertCount.value += CERT_STEP);
-    const showLessCerts = () => (visibleCertCount.value = Math.max(CERT_STEP, visibleCertCount.value - CERT_STEP));
+    const showMoreCerts = () => (visibleCertCount.value += certStep.value);
+    const showLessCerts = () => (visibleCertCount.value = Math.max(certStep.value, visibleCertCount.value - certStep.value));
 
     onMounted(() => {
       fetchCerts();
       updateMaxBadgeCols();
+      visibleCertCount.value = certStep.value;
       window.addEventListener('resize', updateMaxBadgeCols);
     });
 
