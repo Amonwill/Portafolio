@@ -39,7 +39,7 @@
           <p class="project-desc">{{ proj.desc }}</p>
           <div class="project-techs">
             <span v-for="t in proj.tech" :key="t.name" class="tech-icon">
-              <img v-if="t.iconType === 'Imagen'" :src="urlFor(t.image).url()" class="tech-img-icon" />
+              <img v-if="t.iconType === 'Image'" :src="urlFor(t.image).url()" class="tech-img-icon" />
               <i v-else-if="t.iconType === 'FontAwesome'" :class="t.iconClass" :style="{color: t.color}"></i>
               <span v-else>{{ t.emoji }}</span>
             </span>

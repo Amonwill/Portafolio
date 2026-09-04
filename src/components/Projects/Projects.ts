@@ -2,7 +2,6 @@ import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { client, urlFor } from '../../sanityClient';
 import ProjectModal from './ProjectModal.vue';
 
-// Keep this in sync with the `projectType` options defined in the Sanity schema.
 const FILTERS = [
   { value: 'all', label: 'All' },
   { value: 'web', label: 'Web' },
@@ -10,8 +9,6 @@ const FILTERS = [
   { value: 'mobile', label: 'Mobile App' }
 ];
 
-// Max columns the grid is allowed to use at each viewport tier.
-// Keep these breakpoints in sync with the media queries in Projects.css.
 const getMaxColsForWidth = (width: number) => {
   if (width <= 600) return 1;
   if (width <= 900) return 2;
@@ -50,7 +47,6 @@ export default {
       projects.value = await client.fetch(query);
     };
 
-    // Only show filter buttons for types that actually have projects, plus "All".
     const availableFilters = computed(() => {
       const typesInUse = new Set(projects.value.map((p: any) => p.projectType).filter(Boolean));
       return FILTERS.filter((f) => f.value === 'all' || typesInUse.has(f.value));
@@ -61,10 +57,7 @@ export default {
       return projects.value.filter((p: any) => p.projectType === activeFilter.value);
     });
 
-    // Number of columns the grid should render right now: never more columns
-    // than the viewport comfortably fits, and never more than there are
-    // results, so a partial row always sits centered instead of pinned
-    // to one side.
+
     const gridColumns = computed(() => {
       const count = filteredProjects.value.length || 1;
       return Math.max(1, Math.min(count, maxCols.value));

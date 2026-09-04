@@ -65,7 +65,7 @@
           <h3>Technologies and Frameworks</h3>
           <div class="tech-chips-container">
             <div v-for="t in project.tech" :key="t.name" class="tech-chip">
-              <img v-if="t.iconType === 'Imagen'" :src="urlFor(t.image).url()" class="chip-icon-img" />
+                <img v-if="t.iconType === 'Image'" :src="urlFor(t.image).url()" class="chip-icon-img" />
               <i
                 v-else-if="t.iconType === 'FontAwesome'"
                 :class="t.iconClass"
